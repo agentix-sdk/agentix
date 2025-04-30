@@ -28,7 +28,10 @@ export default function Home() {
         signAllTransactions: signAllTransactions,
         signMessage: signMessage,
         signTransaction: signTransaction,
-      })
+      }),
+      {
+        COINGECKO_DEMO_API_KEY: process.env.NEXT_PUBLIC_COINGECKO_DEMO_API_KEY,
+      }
     );
 
     agentix.use(new CoingeckoPlugin());
@@ -45,7 +48,7 @@ export default function Home() {
       const openai = createOpenAI({
         apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
       });
-      const model = openai('gpt-4o-mini');
+      const model = openai('gpt-4o');
       
       const toolResults: any[] = [];
       

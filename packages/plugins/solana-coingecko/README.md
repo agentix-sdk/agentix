@@ -43,7 +43,8 @@ const agent = new Agentix({
     signTransaction: signTransaction,
   }),
   config: {
-    COINGECKO_PRO_API_KEY: "your-coingecko-pro-api-key"
+    COINGECKO_PRO_API_KEY: "your-coingecko-pro-api-key",
+    COINGECKO_DEMO_API_KEY: "your-coingecko-demo-api-key",
   }
 });
 
