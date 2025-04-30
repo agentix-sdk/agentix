@@ -6,7 +6,7 @@ import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { Agentix, createSolanaTools, SolanaWalletBase } from 'agentix';
 import { useMemo, useState, FormEvent } from 'react';
 import { solanaAdaptor } from '@agentix/wallet-solana';
-import AdrenaPlugin from '@agentix/plugin-solana-adrena';
+import CoingeckoPlugin from '@agentix/plugin-solana-coingecko';
 import { generateText } from 'ai';
 import { createOpenAI } from "@ai-sdk/openai";
 
@@ -31,7 +31,7 @@ export default function Home() {
       })
     );
 
-    agentix.use(new AdrenaPlugin())
+    agentix.use(new CoingeckoPlugin());
 
     return createSolanaTools(agentix, agentix.actions);
   }, [connection, connected, publicKey, sendTransaction, signAllTransactions, signMessage, signTransaction]);
