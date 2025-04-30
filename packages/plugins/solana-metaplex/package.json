@@ -1,0 +1,62 @@
+{
+  "name": "@agentix/plugin-solana-metaplex",
+  "version": "0.1.0",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf dist .turbo node_modules",
+    "build": "tsup src/index.ts --dts --clean --format cjs,esm --out-dir dist",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agentix-sdk/agentix.git"
+  },
+  "homepage": "https://github.com/agentix-sdk/agentix/tree/main/packages/plugins/solana-metaplex",
+  "keywords": [
+    "solana",
+    "metaplex",
+    "agentix",
+    "plugin",
+    "defi",
+    "perpetuals"
+  ],
+  "author": "agentix-sdk",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@metaplex-foundation/digital-asset-standard-api": "^1.0.4",
+    "@metaplex-foundation/mpl-core": "^1.2.0",
+    "@metaplex-foundation/mpl-token-metadata": "^3.3.0",
+    "@metaplex-foundation/mpl-toolbox": "^0.9.4",
+    "@metaplex-foundation/umi": "^1.0.0",
+    "@metaplex-foundation/umi-bundle-defaults": "^1.0.0",
+    "@metaplex-foundation/umi-web3js-adapters": "^1.0.0",
+    "@solana/spl-token": "^0.4.9",
+    "agentix": "workspace:*",
+    "zod": "^3.24.1"
+  },
+  "peerDependencies": {
+    "@solana/web3.js": "^1.98.0",
+    "agentix": "workspace:*"
+  }
+} 

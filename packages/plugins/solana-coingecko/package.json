@@ -1,0 +1,54 @@
+{
+  "name": "@agentix/plugin-solana-coingecko",
+  "version": "0.1.0",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf dist .turbo node_modules",
+    "build": "tsup src/index.ts --dts --clean --format cjs,esm --out-dir dist",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agentix-sdk/agentix.git"
+  },
+  "homepage": "https://github.com/agentix-sdk/agentix/tree/main/packages/plugins/solana-coingecko",
+  "keywords": [
+    "solana",
+    "coingecko",
+    "agentix",
+    "plugin",
+    "defi",
+    "perpetuals"
+  ],
+  "author": "agentix-sdk",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "agentix": "workspace:*",
+    "zod": "^3.24.1"
+  },
+  "peerDependencies": {
+    "@solana/web3.js": "^1.98.0",
+    "agentix": "workspace:*"
+  }
+} 

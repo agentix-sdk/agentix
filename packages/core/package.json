@@ -1,0 +1,60 @@
+{
+  "name": "agentix",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "description": "AI-powered SDK that unifies multi-chain wallets, plugins & tools for autonomous Web3 agents",
+  "scripts": {
+    "clean": "rm -rf dist .turbo node_modules",
+    "build": "tsup src/index.ts --dts --clean --format cjs,esm --out-dir dist",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agentix-sdk/agentix.git"
+  },
+  "homepage": "https://github.com/agentix-sdk/agentix/tree/main/packages/core",
+  "keywords": ["agent", "ai", "agentix"],
+  "author": "agentix-sdk",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@langchain/core": "^0.3.44",
+    "@solana/web3.js": "^1.98.0",
+    "ai": "^4.1.5",
+    "bs58": "^6.0.0",
+    "rpc-websockets": "^10.0.0",
+    "tweetnacl": "^1.0.3",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@typescript-eslint/eslint-plugin": "^8.18.2",
+    "@typescript-eslint/parser": "^8.18.2",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
+    "prettier": "^3.4.2",
+    "tsx": "^4.19.2",
+    "turbo": "^1.12.4",
+    "typescript": "^5.3.3"
+  }
+} 
