@@ -1,5 +1,5 @@
 {
-  "name": "@agentix/plugin-evm-0x",
+  "name": "@agentix/plugin-evm-balmy",
   "version": "1.0.0",
   "type": "module",
   "publishConfig": {
@@ -32,10 +32,10 @@
     "type": "git",
     "url": "https://github.com/agentix-sdk/agentix.git"
   },
-  "homepage": "https://github.com/agentix-sdk/agentix/tree/main/packages/plugins/evm-0x",
+  "homepage": "https://github.com/agentix-sdk/agentix/tree/main/packages/plugins/evm-balmy",
   "keywords": [
     "evm",
-    "0x",
+    "balmy",
     "agentix",
     "plugin",
     "defi",
