@@ -3,5 +3,5 @@ packages:
   - "packages/plugins/*"
   - "packages/wallets/*"
   - "test"
-  
+  - "!examples/*"
   - "!**/examples/**"
