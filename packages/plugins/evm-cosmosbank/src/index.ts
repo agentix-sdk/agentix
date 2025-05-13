@@ -1,25 +1,59 @@
-import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
+import { CosmosChain, PluginBase } from "agentix";
 
-class EvmCosmosbankPlugin extends PluginBase<EvmWalletBase> {
+// Import tools
+import * as cosmosBankTools from "./tools/cosmosbank";
+
+// Import actions
+import {
+    getTokenBalanceAction,
+    getDenomMetadataAction,
+    getSupplyOfAction,
+    sendTokenAction
+} from "./actions/cosmosbank";
+
+/**
+ * Cosmos Bank plugin for interacting with the Cosmos Bank module
+ */
+class CosmosBankPlugin extends PluginBase<any> {
     constructor() {
-        const methods = {
+        // Register methods for tool access
+        const methods: Record<string, Function> = {
+            getTokenBalance: cosmosBankTools.getTokenBalance,
+            getDenomMetadata: cosmosBankTools.getDenomMetadata,
+            getSupplyOf: cosmosBankTools.getSupplyOf,
+            sendToken: cosmosBankTools.sendToken
         };
 
+        // Register actions
         const actions = [
-        ] as any;
+            getTokenBalanceAction,
+            getDenomMetadataAction,
+            getSupplyOfAction,
+            sendTokenAction
+        ];
 
+        // This plugin supports Cosmos chains only
         const supportedChains = [
             {
-                type: "evm",
-            } as EvmChain
+                type: "cosmos",
+            } as CosmosChain
         ];
 
         super("cosmosbank", methods, actions, supportedChains);
     }
 
-    supportsWallet(wallet: EvmWalletBase): boolean {
-        return wallet instanceof EvmWalletBase;
+    supportsWallet(wallet: any): boolean {
+        // Check if the wallet is a Cosmos wallet
+        return wallet.getChainId !== undefined;
     }
 }
 
-export default EvmCosmosbankPlugin;
+/**
+ * Create a new Cosmos Bank plugin instance
+ */
+export function cosmosbank() {
+    return new CosmosBankPlugin();
+}
+
+export default cosmosbank;
+
