@@ -1,13 +1,26 @@
 import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
+import { coinTossAction, diceAction, getBetAction, getBetsAction, rouletteAction } from "./actions";
+import { getBetByHash, getBetsList, playCoinToss, playDice, playRoulette } from "./tools";
 
 class EvmBetswirlPlugin extends PluginBase<EvmWalletBase> {
     constructor() {
         const methods = {
+            playCoinToss,
+            playDice,
+            playRoulette,
+            getBetByHash,
+            getBetsList
         };
 
         const actions = [
-        ] as any;
+            coinTossAction,
+            diceAction,
+            rouletteAction,
+            getBetAction,
+            getBetsAction
+        ];
 
+        // BetSwirl is supported on multiple chains
         const supportedChains = [
             {
                 type: "evm",

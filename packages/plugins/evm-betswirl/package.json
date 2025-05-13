@@ -39,13 +39,17 @@
     "agentix",
     "plugin",
     "defi",
-    "perpetuals"
+    "perpetuals",
+    "betting",
+    "casino"
   ],
   "author": "agentix-sdk",
   "license": "Apache-2.0",
   "dependencies": {
     "agentix": "workspace:*",
-    "zod": "^3.24.1"
+    "zod": "^3.24.1",
+    "@betswirl/sdk-core": "0.0.2",
+    "viem": "^2.23.2"
   },
   "peerDependencies": {
     "agentix": "workspace:*"
