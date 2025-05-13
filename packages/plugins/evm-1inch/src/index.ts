@@ -1,12 +1,16 @@
 import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
+import { oneInchBalanceAction } from "./actions";
+import { getAggregatedBalancesAndAllowances } from "./tools";
 
-class Evm1InchPlugin extends PluginBase<EvmWalletBase> {
+class OneInchPlugin extends PluginBase<EvmWalletBase> {
     constructor() {
         const methods = {
+            getOneInchBalances: getAggregatedBalancesAndAllowances,
         };
 
         const actions = [
-        ] as any;
+            oneInchBalanceAction,
+        ];
 
         const supportedChains = [
             {
@@ -22,4 +26,4 @@ class Evm1InchPlugin extends PluginBase<EvmWalletBase> {
     }
 }
 
-export default Evm1InchPlugin;
+export default OneInchPlugin;
