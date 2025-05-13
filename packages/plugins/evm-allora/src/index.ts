@@ -1,12 +1,16 @@
 import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
+import { alloraPricePredictionAction } from "./actions";
+import { getPricePrediction } from "./tools";
 
 class EvmAlloraPlugin extends PluginBase<EvmWalletBase> {
     constructor() {
         const methods = {
+            getAlloraPricePrediction: getPricePrediction,
         };
 
         const actions = [
-        ] as any;
+            alloraPricePredictionAction,
+        ];
 
         const supportedChains = [
             {
