@@ -1,12 +1,18 @@
 import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
+import { balmyExecuteSwapAction, balmyGetQuoteAction } from "./actions";
+import { executeSwap, getQuote } from "./tools";
 
 class EvmBalmyPlugin extends PluginBase<EvmWalletBase> {
     constructor() {
         const methods = {
+            getBalmyQuote: getQuote,
+            executeBalmySwap: executeSwap
         };
 
         const actions = [
-        ] as any;
+            balmyGetQuoteAction,
+            balmyExecuteSwapAction
+        ];
 
         const supportedChains = [
             {
