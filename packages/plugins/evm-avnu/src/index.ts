@@ -1,12 +1,16 @@
 import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
+import { avnuSwapAction } from "./actions";
+import { executeTokenSwap } from "./tools";
 
 class EvmAvnuPlugin extends PluginBase<EvmWalletBase> {
     constructor() {
         const methods = {
+            executeAvnuSwap: executeTokenSwap,
         };
 
         const actions = [
-        ] as any;
+            avnuSwapAction,
+        ];
 
         const supportedChains = [
             {
