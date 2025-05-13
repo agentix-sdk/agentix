@@ -189,9 +189,15 @@ importers:
 
   packages/plugins/evm-balancer:
     dependencies:
+      '@balancer/sdk':
+        specifier: 2.4.0
+        version: 2.4.0(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.3)
       agentix:
         specifier: workspace:*
         version: link:../../core
+      viem:
+        specifier: ^2.23.4
+        version: 2.23.4(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.3)
       zod:
         specifier: ^3.24.1
         version: 3.24.3
@@ -1210,6 +1216,14 @@ packages:
   '@babel/runtime@7.27.0':
     resolution: {integrity: sha512-VtPOkrdPHZsKc/clNqyi9WUA8TINkZ4cGk63UUE3u4pmB2k+ZMQRDuIOagv8UVd6j7k0T3+RRIb7beKTebNbcw==}
     engines: {node: '>=6.9.0'}
+
+  '@balancer-labs/balancer-maths@0.0.24':
+    resolution: {integrity: sha512-M6iqcmLfR9CP1mw3R5w0FdtZkUk7M0vCJhloAfhE/xufbAZrCSoapFYlt/NMBKLDQoGNJ2FN5E4zpdLVsxhoow==}
+    engines: {node: '>=18.x'}
+
+  '@balancer/sdk@2.4.0':
+    resolution: {integrity: sha512-o7IX19Te0wTgIVYAz6efoaMV3gm5hCJ8JvNPZiIQsutFntodEBNsx0LSMK/0AmqoXNWzGtBBbXagieKyy3L2IQ==}
+    engines: {node: '>=18.x'}
 
   '@biomejs/biome@1.9.4':
     resolution: {integrity: sha512-1rkd7G70+o9KkTn5KLmDYXihGoTaIGO9PIIN2ZB7UJxFrWw04CZHPYiMRjYsaDvVV7hP1dYNRLxSANLaBFGpog==}
@@ -6312,6 +6326,20 @@ snapshots:
   '@babel/runtime@7.27.0':
     dependencies:
       regenerator-runtime: 0.14.1
+
+  '@balancer-labs/balancer-maths@0.0.24': {}
+
+  '@balancer/sdk@2.4.0(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.3)':
+    dependencies:
+      '@balancer-labs/balancer-maths': 0.0.24
+      decimal.js-light: 2.5.1
+      lodash.clonedeep: 4.5.0
+      viem: 2.23.4(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.3)
+    transitivePeerDependencies:
+      - bufferutil
+      - typescript
+      - utf-8-validate
+      - zod
 
   '@biomejs/biome@1.9.4':
     optionalDependencies:
