@@ -1,6 +1,7 @@
 export * from "./agent";
 export * from "./agent/plugin-base";
 export * from "./agent/solana-wallet-base";
+export * from "./agent/evm-wallet-base";
 export * from "./agent/wallet-base";
 export * from "./constants";
 export * from "./langchain";

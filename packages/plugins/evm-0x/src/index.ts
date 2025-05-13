@@ -1,12 +1,20 @@
-import { EvmChain, PluginBase, WalletBase } from "agentix";
+import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
 
-class Evm0xPlugin extends PluginBase<WalletBase> {
+import { zeroExTokenSwapAction, zeroExTokenPriceAction } from "./actions/zeroExTokenSwapAction";
+
+import { getPrice, swap } from "./tools/zero_ex_token_swap";
+
+class ZeroExPlugin extends PluginBase<EvmWalletBase> {
     constructor() {
         const methods = {
+            getZeroExTokenPrice: getPrice,
+            zeroExTokenSwap: swap,
         };
 
         const actions = [
-        ] as any;
+            zeroExTokenSwapAction,
+            zeroExTokenPriceAction,
+        ];
 
         const supportedChains = [
             {
@@ -17,9 +25,9 @@ class Evm0xPlugin extends PluginBase<WalletBase> {
         super("0x", methods, actions, supportedChains);
     }
 
-    supportsWallet(wallet: WalletBase): boolean {
-        return wallet instanceof WalletBase;
+    supportsWallet(wallet: EvmWalletBase): boolean {
+        return wallet instanceof EvmWalletBase;
     }
 }
 
-export default Evm0xPlugin;
+export default ZeroExPlugin;

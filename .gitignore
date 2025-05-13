@@ -48,3 +48,4 @@ pnpm-debug.log*
 # Cache
 .eslintcache
 .cache 
+.cursor

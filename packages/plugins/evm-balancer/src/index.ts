@@ -1,6 +1,6 @@
-import { EvmChain, PluginBase, WalletBase } from "agentix";
+import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
 
-class EvmBalancerPlugin extends PluginBase<WalletBase> {
+class EvmBalancerPlugin extends PluginBase<EvmWalletBase> {
     constructor() {
         const methods = {
         };
@@ -17,8 +17,8 @@ class EvmBalancerPlugin extends PluginBase<WalletBase> {
         super("balancer", methods, actions, supportedChains);
     }
 
-    supportsWallet(wallet: WalletBase): boolean {
-        return wallet instanceof WalletBase;
+    supportsWallet(wallet: EvmWalletBase): boolean {
+        return wallet instanceof EvmWalletBase;
     }
 }
 

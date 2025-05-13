@@ -1,6 +1,6 @@
-import { EvmChain, PluginBase, WalletBase } from "agentix";
+import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
 
-class EvmHyperlanePlugin extends PluginBase<WalletBase> {
+class EvmHyperlanePlugin extends PluginBase<EvmWalletBase> {
     constructor() {
         const methods = {
         };
@@ -17,8 +17,8 @@ class EvmHyperlanePlugin extends PluginBase<WalletBase> {
         super("hyperlane", methods, actions, supportedChains);
     }
 
-    supportsWallet(wallet: WalletBase): boolean {
-        return wallet instanceof WalletBase;
+    supportsWallet(wallet: EvmWalletBase): boolean {
+        return wallet instanceof EvmWalletBase;
     }
 }
 

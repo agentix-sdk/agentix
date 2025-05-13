@@ -1,6 +1,6 @@
-import { EvmChain, PluginBase, WalletBase } from "agentix";
+import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
 
-class EvmEnsoPlugin extends PluginBase<WalletBase> {
+class EvmEnsoPlugin extends PluginBase<EvmWalletBase> {
     constructor() {
         const methods = {
         };
@@ -17,8 +17,8 @@ class EvmEnsoPlugin extends PluginBase<WalletBase> {
         super("enso", methods, actions, supportedChains);
     }
 
-    supportsWallet(wallet: WalletBase): boolean {
-        return wallet instanceof WalletBase;
+    supportsWallet(wallet: EvmWalletBase): boolean {
+        return wallet instanceof EvmWalletBase;
     }
 }
 

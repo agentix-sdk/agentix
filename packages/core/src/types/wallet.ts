@@ -1,0 +1,37 @@
+import type { Abi, TypedDataDomain } from "abitype";
+
+export type EVMReadRequest = {
+    address: string;
+    functionName: string;
+    args?: unknown[];
+    abi: Abi;
+};
+
+
+export type EVMTransaction = {
+    to: string;
+    functionName?: string;
+    args?: unknown[];
+    value?: bigint;
+    abi?: Abi;
+    options?: EVMTransactionOptions;
+    data?: `0x${string}`;
+};
+
+export type EVMTransactionOptions = {
+    paymaster?: {
+        address: `0x${string}`;
+        input: `0x${string}`;
+    };
+};
+
+export type EVMTypedData = {
+    domain: TypedDataDomain;
+    types: Record<string, unknown>;
+    primaryType: string;
+    message: Record<string, unknown>;
+};
+
+export type EVMReadResult = {
+    value: unknown;
+};
