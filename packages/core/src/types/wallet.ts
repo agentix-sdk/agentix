@@ -1,4 +1,5 @@
 import type { Abi, TypedDataDomain } from "abitype";
+import type { Call, InvocationsDetails } from "starknet";
 
 export type EVMReadRequest = {
     address: string;
@@ -34,4 +35,9 @@ export type EVMTypedData = {
 
 export type EVMReadResult = {
     value: unknown;
+};
+
+export type StarknetTransaction = {
+    calls: Call[];
+    transactionDetails?: InvocationsDetails;
 };
