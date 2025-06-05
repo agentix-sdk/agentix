@@ -43,11 +43,11 @@ const switchboardSimulateFeedAction: Action<SolanaWalletBase> = {
   }),
   handler: async (_agent, input: Record<string, any>) => {
     try {
-      const { feedAddress, crossbarUrl } = input;
-      const result = await simulate_switchboard_feed(feedAddress, crossbarUrl);
+      const { feed, crossbarUrl } = input;
+      const result = await simulate_switchboard_feed(feed, crossbarUrl);
       return {
         status: "success",
-        feed: feedAddress,
+        feed: feed,
         message: `Simulation result: ${result}`,
       };
     } catch (error: any) {

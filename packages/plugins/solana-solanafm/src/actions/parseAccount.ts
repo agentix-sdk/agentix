@@ -36,7 +36,7 @@ const parseAccountAction: Action<SolanaWalletBase> = {
     programId: z.string(),
     accountData: z.string(),
   }),
-  handler: async (input: Record<string, any>) => {
+  handler: async (agent,input: Record<string, any>) => {
     try {
       const result = await parse_account(input.programId, input.accountData);
 

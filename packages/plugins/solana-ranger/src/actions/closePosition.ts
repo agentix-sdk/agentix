@@ -1,8 +1,8 @@
 import { z } from "zod";
 import type { Action, Agentix, SolanaWalletBase } from "agentix";
-import { RANGER_SOR_API_BASE } from "../index";
-import { TransactionMessage, VersionedTransaction } from "@solana/web3.js";
+import { VersionedTransaction } from "@solana/web3.js";
 import base64js from "base64-js";
+import { getRangerSorAPIBase } from "@/utils";
 
 export const closePositionSchema = z.object({
   fee_payer: z.string(),
@@ -48,13 +48,12 @@ export const closePositionAction: Action<SolanaWalletBase> = {
   handler: async (
     agent: Agentix<SolanaWalletBase>,
     input: any,
-    { apiKey }: any
   ) => {
-    const response = await fetch(`${RANGER_SOR_API_BASE}/v1/close_position`, {
+    const response = await fetch(`${getRangerSorAPIBase(agent)}/v1/close_position`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": apiKey,
+        "x-api-key": agent.config?.rangerSorAPIKey,
       },
       body: JSON.stringify(input),
     });

@@ -34,11 +34,29 @@ export async function parse_account(
       );
     }
 
+    const layout = accountParser.accountLayouts;
+    let layouts: any[] = [];
+
+    if (layout instanceof Map) {
+      layout.forEach((value) => {
+        layouts.push({
+          name: value.instructionName,
+          serializer: {
+            account: value.serializer?.description,
+            deserialize: value.serializer?.deserialize,
+            fixedSize: value.serializer?.fixedSize,
+            maxSize: value.serializer?.maxSize,
+            serialize: value.serializer?.serialize,
+          },
+        });
+      });
+    }
+
     return {
       name: accountParser.getProgramName(),
-      layout: accountParser.accountLayouts,
+      layout: null,
       data: accountParser.parseAccount(account_data),
-    };
+    } as any;
   } catch (error) {
     throw new Error(`Error failed to parse account: ${error}`);
   }

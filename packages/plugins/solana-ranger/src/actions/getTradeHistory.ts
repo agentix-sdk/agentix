@@ -1,7 +1,7 @@
 import { z } from "zod";
 import type { Action, SolanaWalletBase } from "agentix";
-import { RANGER_DATA_API_BASE } from "../index";
 import { Agentix } from "agentix";
+import { getRangerDataAPIBase } from "@/utils";
 
 export const getTradeHistorySchema = z.object({
   public_key: z.string(),
@@ -31,7 +31,7 @@ export const getTradeHistoryAction: Action<SolanaWalletBase> = {
     ]
   ],
   schema: getTradeHistorySchema,
-  handler: async (agent: Agentix<SolanaWalletBase>, input: any, { apiKey }: any) => {
+  handler: async (agent: Agentix<SolanaWalletBase>, input: any) => {
     const params = new URLSearchParams();
     params.set("public_key", input.public_key);
     if (input.platforms) input.platforms.forEach((p: string) => params.append("platforms", p));
@@ -39,11 +39,11 @@ export const getTradeHistoryAction: Action<SolanaWalletBase> = {
     if (input.start_time) params.set("start_time", input.start_time);
     if (input.end_time) params.set("end_time", input.end_time);
 
-    const response = await fetch(`${RANGER_DATA_API_BASE}/v1/trade_history?${params.toString()}`, {
+    const response = await fetch(`${getRangerDataAPIBase(agent)}/v1/trade_history?${params.toString()}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": apiKey,
+        "x-api-key": agent.config?.rangerDataAPIKey,
       },
     });
     if (!response.ok) {

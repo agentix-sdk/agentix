@@ -1,3 +1,4 @@
+import { SendOptions, Signer } from "@solana/web3.js";
 import type { Abi, TypedDataDomain } from "abitype";
 import type { Call, InvocationsDetails } from "starknet";
 
@@ -41,3 +42,7 @@ export type StarknetTransaction = {
     calls: Call[];
     transactionDetails?: InvocationsDetails;
 };
+
+export interface SendTransactionOptions extends SendOptions {
+    signers?: Signer[];
+}

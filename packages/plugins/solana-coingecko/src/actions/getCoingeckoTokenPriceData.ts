@@ -34,9 +34,10 @@ const getCoingeckoTokenPriceDataAction: Action<SolanaWalletBase> = {
   }),
   handler: async (agent, input) => {
     try {
+      const data = await getTokenPriceData(agent, input.tokenAddresses);
       return {
         status: "success",
-        result: getTokenPriceData(agent, input.tokenAddresses),
+        result: data,
       };
     } catch (e) {
       return {

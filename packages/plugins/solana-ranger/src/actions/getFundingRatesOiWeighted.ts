@@ -1,6 +1,6 @@
 import { z } from "zod";
 import type { Action, Agentix, SolanaWalletBase } from "agentix";
-import { RANGER_DATA_API_BASE } from "../index";
+import { getRangerDataAPIBase } from "@/utils";
 
 export const getFundingRatesOiWeightedSchema = z.object({});
 export type GetFundingRatesOiWeightedInput = z.infer<
@@ -33,15 +33,14 @@ export const getFundingRatesOiWeightedAction: Action<SolanaWalletBase> = {
   handler: async (
     agent: Agentix<SolanaWalletBase>,
     _input: any,
-    { apiKey }: any
   ) => {
     const response = await fetch(
-      `${RANGER_DATA_API_BASE}/v1/funding_rates/oi_weighted`,
+      `${getRangerDataAPIBase(agent)}/v1/funding_rates/oi_weighted`,
       {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "x-api-key": apiKey,
+          "x-api-key": agent.config?.rangerDataAPIKey,
         },
       }
     );

@@ -1,6 +1,6 @@
 import { z } from "zod";
 import type { Action, Agentix, SolanaWalletBase } from "agentix";
-import { RANGER_DATA_API_BASE } from "../index";
+import { getRangerDataAPIBase } from "@/utils";
 
 export const getLiquidationsLatestSchema = z.object({});
 export type GetLiquidationsLatestInput = z.infer<
@@ -35,7 +35,7 @@ export const getLiquidationsLatestAction: Action<SolanaWalletBase> = {
     { apiKey }: any
   ) => {
     const response = await fetch(
-      `${RANGER_DATA_API_BASE}/v1/liquidations/latest`,
+      `${getRangerDataAPIBase(agent)}/v1/liquidations/latest`,
       {
         method: "GET",
         headers: {

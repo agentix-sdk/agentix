@@ -1,6 +1,6 @@
 import { z } from "zod";
 import type { Action, Agentix, SolanaWalletBase } from "agentix";
-import { RANGER_DATA_API_BASE } from "../index";
+import { getRangerDataAPIBase } from "@/utils";
 
 export const getFundingRatesExtremeSchema = z.object({
   granularity: z.string().optional(),
@@ -35,19 +35,18 @@ export const getFundingRatesExtremeAction: Action<SolanaWalletBase> = {
   handler: async (
     agent: Agentix<SolanaWalletBase>,
     input: any,
-    { apiKey }: any
   ) => {
     const params = new URLSearchParams();
     if (input.granularity) params.set("granularity", input.granularity);
     if (input.limit !== undefined) params.set("limit", input.limit.toString());
 
     const response = await fetch(
-      `${RANGER_DATA_API_BASE}/v1/funding_rates/extreme?${params.toString()}`,
+      `${getRangerDataAPIBase(agent)}/v1/funding_rates/extreme?${params.toString()}`,
       {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "x-api-key": apiKey,
+          "x-api-key": agent.config?.rangerDataAPIKey,
         },
       }
     );

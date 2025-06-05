@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { RANGER_SOR_API_BASE } from "../index";
 import { Action, Agentix, SolanaWalletBase } from "agentix";
+import { getRangerSorAPIBase } from "@/utils";
 
 export const getQuoteSchema = z.object({
   fee_payer: z.string().describe("The public key of the fee payer account."),
@@ -72,12 +72,12 @@ export const getQuoteAction: Action<SolanaWalletBase> = {
     ],
   ],
   schema: getQuoteSchema,
-  handler: async (agent: Agentix<SolanaWalletBase>, input: any, { apiKey }: any) => {
-    const response = await fetch(`${RANGER_SOR_API_BASE}/v1/order_metadata`, {
+  handler: async (agent: Agentix<SolanaWalletBase>, input: any) => {
+    const response = await fetch(`${getRangerSorAPIBase(agent)}/v1/order_metadata`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": apiKey,
+        "x-api-key": agent.config?.rangerSorAPIKey,
       },
       body: JSON.stringify(input),
     });

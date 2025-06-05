@@ -36,7 +36,7 @@ const parseInstructionAction: Action<SolanaWalletBase> = {
     programId: z.string(),
     instructionData: z.string(),
   }),
-  handler: async (input: Record<string, any>) => {
+  handler: async (agent, input: Record<string, any>) => {
     try {
       const result = await parse_instruction(
         input.programId,

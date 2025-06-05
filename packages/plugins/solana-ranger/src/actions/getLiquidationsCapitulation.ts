@@ -1,6 +1,6 @@
 import { z } from "zod";
 import type { Action, Agentix, SolanaWalletBase } from "agentix";
-import { RANGER_DATA_API_BASE } from "../index";
+import { getRangerDataAPIBase } from "@/utils";
 
 export const getLiquidationsCapitulationSchema = z.object({
   granularity: z.string().optional(),
@@ -36,7 +36,6 @@ export const getLiquidationsCapitulationAction: Action<SolanaWalletBase> = {
   handler: async (
     agent: Agentix<SolanaWalletBase>,
     input: any,
-    { apiKey }: any
   ) => {
     const params = new URLSearchParams();
     if (input.granularity) params.set("granularity", input.granularity);
@@ -44,12 +43,12 @@ export const getLiquidationsCapitulationAction: Action<SolanaWalletBase> = {
       params.set("threshold", input.threshold.toString());
 
     const response = await fetch(
-      `${RANGER_DATA_API_BASE}/v1/liquidations/capitulation?${params.toString()}`,
+      `${getRangerDataAPIBase(agent)}/v1/liquidations/capitulation?${params.toString()}`,
       {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "x-api-key": apiKey,
+          "x-api-key": agent.config?.rangerDataAPIKey,
         },
       }
     );

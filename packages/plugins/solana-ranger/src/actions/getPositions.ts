@@ -1,5 +1,6 @@
 import { z } from "zod";
 import type { Action, Agentix, SolanaWalletBase } from "agentix";
+import { getRangerDataAPIBase } from "@/utils";
 
 export const getPositionsSchema = z.object({
   public_key: z.string().describe("User's Solana wallet address."),
@@ -43,14 +44,7 @@ export const getPositionsAction: Action<SolanaWalletBase> = {
     ],
   ],
   schema: getPositionsSchema,
-  handler: async (
-    agent: Agentix<SolanaWalletBase>,
-    input: any,
-    {
-      apiKey,
-      baseUrl = "https://data-api-staging-437363704888.asia-northeast1.run.app",
-    }: any
-  ) => {
+  handler: async (agent: Agentix<SolanaWalletBase>, input: any) => {
     const params = new URLSearchParams();
     params.set("public_key", input.public_key);
     if (input.platforms)
@@ -62,12 +56,12 @@ export const getPositionsAction: Action<SolanaWalletBase> = {
     if (input.from) params.set("from", input.from);
 
     const response = await fetch(
-      `${baseUrl}/v1/positions?${params.toString()}`,
+      `${getRangerDataAPIBase(agent)}/v1/positions?${params.toString()}`,
       {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "x-api-key": apiKey,
+          "x-api-key": agent.config?.rangerDataAPIKey,
         },
       }
     );

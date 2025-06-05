@@ -97,11 +97,6 @@ const swapAction: Action<SolanaWalletBase> = {
     slippageBps: z.number().min(0).max(10000).optional(),
   }),
   handler: async (agent, input: Record<string, any>) => {
-    // TODO: should we allow evm to evm?
-    if (input.fromChain !== "solana" && input.toChain !== "solana") {
-      throw new Error("one of the from or to chain should be solana.");
-    }
-
     const url = await swap(
       agent,
       input.amount,

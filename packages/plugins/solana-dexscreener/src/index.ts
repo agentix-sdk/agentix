@@ -1,10 +1,10 @@
 import { SolanaChain, PluginBase, SolanaWalletBase } from "agentix";
 
-import getTokenDataAction from "./actions/getTokenData";
+import { getTokenDataByAddressAction, getTokenDataByTickerAction } from "./actions/getTokenData";
 import {
     getTokenAddressFromTicker,
     getTokenDataByAddress,
-  } from "./tools";
+} from "./tools";
 
 class DexscreenerPlugin extends PluginBase<SolanaWalletBase> {
     constructor() {
@@ -14,7 +14,8 @@ class DexscreenerPlugin extends PluginBase<SolanaWalletBase> {
         };
 
         const actions = [
-            getTokenDataAction,
+            getTokenDataByAddressAction,
+            getTokenDataByTickerAction,
         ];
 
         const supportedChains = [

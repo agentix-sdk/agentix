@@ -1,6 +1,6 @@
 import { z } from "zod";
 import type { Action, Agentix, SolanaWalletBase } from "agentix";
-import { RANGER_DATA_API_BASE } from "../index";
+import { getRangerDataAPIBase } from "@/utils";
 
 export const getFundingRatesTrendSchema = z.object({
   symbol: z.string(),
@@ -35,19 +35,18 @@ export const getFundingRatesTrendAction: Action<SolanaWalletBase> = {
   handler: async (
     agent: Agentix<SolanaWalletBase>,
     input: any,
-    { apiKey }: any
   ) => {
     const params = new URLSearchParams();
     params.set("symbol", input.symbol);
     if (input.platform) params.set("platform", input.platform);
 
     const response = await fetch(
-      `${RANGER_DATA_API_BASE}/v1/funding_rates/trend?${params.toString()}`,
+      `${getRangerDataAPIBase(agent)}/v1/funding_rates/trend?${params.toString()}`,
       {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "x-api-key": apiKey,
+          "x-api-key": agent.config?.rangerDataAPIKey,
         },
       }
     );

@@ -34,6 +34,10 @@ async function findTokenContract(
     throw new Error(`Couldn't find token with ${symbol} symbol`);
   }
 
+  if (chain === "solana" && token.contract?.startsWith('0x')) {
+    return token.mint;
+  }
+
   return token.contract;
 }
 

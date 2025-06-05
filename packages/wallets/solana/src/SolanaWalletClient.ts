@@ -2,8 +2,6 @@ import { SolanaWalletBase } from "agentix";
 import {
     Connection,
     PublicKey,
-    VersionedTransaction,
-    type Transaction,
   } from "@solana/web3.js";
 import { formatUnits } from "viem";
 
@@ -12,7 +10,7 @@ export type SolanWalletClientCtorParams = {
 };
 
 export abstract class SolanaWalletClient extends SolanaWalletBase {
-    protected connection: Connection;
+    public connection: Connection;
 
     constructor(params: SolanWalletClientCtorParams) {
         super();
@@ -41,10 +39,4 @@ export abstract class SolanaWalletClient extends SolanaWalletBase {
             inBaseUnits: balance.toString(),
         };
     }
-
-    abstract signTransaction<T extends Transaction | VersionedTransaction>(transaction: T): Promise<T>
-
-    abstract signAllTransactions<T extends Transaction | VersionedTransaction>(transactions: T[]): Promise<T[]>
-
-    abstract sendTransaction<T extends Transaction | VersionedTransaction>(transaction: T): Promise<string>
 }

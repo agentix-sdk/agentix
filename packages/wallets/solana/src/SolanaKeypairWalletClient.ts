@@ -25,25 +25,25 @@ export const isVersionedTransaction = (
 };
 
 export class SolanaKeypairWalletClient extends SolanaWalletClient {
-    #keypair: Keypair;
+    public keypair: Keypair;
 
     constructor(params: SolanaKeypairWalletClientCtorParams) {
         const { keypair, connection } = params;
         super({ connection });
-        this.#keypair = keypair;
+        this.keypair = keypair;
     }
 
     getAddress() {
-        return this.#keypair.publicKey.toBase58();
+        return this.keypair.publicKey.toBase58();
     }
 
     async signTransaction<T extends Transaction | VersionedTransaction>(
       transaction: T,
     ): Promise<T> {
       if (isVersionedTransaction(transaction)) {
-        transaction.sign([this.#keypair]);
+        transaction.sign([this.keypair]);
       } else {
-        transaction.partialSign(this.#keypair);
+        transaction.partialSign(this.keypair);
       }
   
       return transaction;
@@ -54,9 +54,9 @@ export class SolanaKeypairWalletClient extends SolanaWalletClient {
     ): Promise<T[]> {
       return txs.map((t) => {
         if (isVersionedTransaction(t)) {
-          t.sign([this.#keypair]);
+          t.sign([this.keypair]);
         } else {
-          t.partialSign(this.#keypair);
+          t.partialSign(this.keypair);
         }
         return t;
       });
@@ -68,9 +68,9 @@ export class SolanaKeypairWalletClient extends SolanaWalletClient {
       const connection = this.connection;
   
       if (transaction instanceof VersionedTransaction) {
-        transaction.sign([this.#keypair]);
+        transaction.sign([this.keypair]);
       } else {
-        transaction.partialSign(this.#keypair);
+        transaction.partialSign(this.keypair);
       }
   
       return await connection.sendRawTransaction(transaction.serialize());
@@ -78,7 +78,7 @@ export class SolanaKeypairWalletClient extends SolanaWalletClient {
   
     async signMessage(message: string) {
         const messageBytes = Buffer.from(message);
-        const signature = nacl.sign.detached(messageBytes, this.#keypair.secretKey);
+        const signature = nacl.sign.detached(messageBytes, this.keypair.secretKey);
         return {
             signature: Buffer.from(signature).toString("hex"),
         };
@@ -90,9 +90,9 @@ export class SolanaKeypairWalletClient extends SolanaWalletClient {
     ): Promise<{ signature: TransactionSignature }> {
       const connection = this.connection;
       if (transaction instanceof VersionedTransaction) {
-        transaction.sign([this.#keypair]);
+        transaction.sign([this.keypair]);
       } else {
-        transaction.partialSign(this.#keypair);
+        transaction.partialSign(this.keypair);
       }
   
       const signature = await connection.sendRawTransaction(
