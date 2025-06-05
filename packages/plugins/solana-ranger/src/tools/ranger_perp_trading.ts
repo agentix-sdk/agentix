@@ -2,7 +2,7 @@ import type { Agentix, SolanaWalletBase } from "agentix";
 import { signOrSendTX } from "agentix";
 import { VersionedTransaction } from "@solana/web3.js";
 import base64js from "base64-js";
-import { RANGER_SOR_API_BASE } from "../index";
+import { getRangerSorAPIBase } from "../utils";
 
 /**
  * Open perp trade on Ranger (uses SOR API)
@@ -35,7 +35,7 @@ export async function openPerpTradeRanger({
     adjustment_type: "Increase", // TODO: Confirm if this should be "Increase" or another type for open
     ...rest,
   };
-  const response = await fetch(`${RANGER_SOR_API_BASE}/v1/increase_position`, {
+  const response = await fetch(`${getRangerSorAPIBase(agent)}/v1/increase_position`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -79,7 +79,7 @@ export async function closePerpTradeRanger({
     adjustment_type: "CloseFlash", // TODO: Confirm adjustment_type for close
     ...rest,
   };
-  const response = await fetch(`${RANGER_SOR_API_BASE}/v1/close_position`, {
+  const response = await fetch(`${getRangerSorAPIBase(agent)}/v1/close_position`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -131,7 +131,7 @@ export async function increasePerpPositionRanger({
     adjustment_type: "Increase",
     ...rest,
   };
-  const response = await fetch(`${RANGER_SOR_API_BASE}/v1/increase_position`, {
+  const response = await fetch(`${getRangerSorAPIBase(agent)}/v1/increase_position`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -178,7 +178,7 @@ export async function decreasePerpPositionRanger({
     adjustment_type: "DecreaseFlash", // TODO: Confirm adjustment_type for decrease
     ...rest,
   };
-  const response = await fetch(`${RANGER_SOR_API_BASE}/v1/decrease_position`, {
+  const response = await fetch(`${getRangerSorAPIBase(agent)}/v1/decrease_position`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -222,7 +222,7 @@ export async function withdrawBalanceRanger({
     adjustment_type: "WithdrawBalanceDrift", // TODO: Confirm adjustment_type for withdraw
     ...rest,
   };
-  const response = await fetch(`${RANGER_SOR_API_BASE}/v1/withdraw_balance`, {
+  const response = await fetch(`${getRangerSorAPIBase(agent)}/v1/withdraw_balance`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -271,7 +271,7 @@ export async function withdrawCollateralRanger({
     ...rest,
   };
   const response = await fetch(
-    `${RANGER_SOR_API_BASE}/v1/withdraw_collateral`,
+    `${getRangerSorAPIBase(agent)}/v1/withdraw_collateral`,
     {
       method: "POST",
       headers: {
