@@ -1,6 +1,6 @@
 {
-  "name": "@agentix/wallet-evm",
-  "version": "1.0.1",
+  "name": "@agentix/plugin-token",
+  "version": "1.0.0",
   "type": "module",
   "publishConfig": {
     "access": "public"
@@ -32,20 +32,21 @@
     "type": "git",
     "url": "https://github.com/agentix-sdk/agentix.git"
   },
-  "homepage": "https://github.com/agentix-sdk/agentix/tree/main/packages/wallets/evm",
+  "homepage": "https://github.com/agentix-sdk/agentix/tree/main/packages/plugins/token",
   "keywords": [
+    "token",
     "agentix",
-    "wallet",
-    "evm"
+    "plugin",
+    "defi",
+    "perpetuals"
   ],
   "author": "agentix-sdk",
   "license": "Apache-2.0",
   "dependencies": {
-    "abitype": "^1.0.6",
     "agentix": "workspace:*",
     "zod": "^3.24.1"
   },
   "peerDependencies": {
     "agentix": "workspace:*"
   }
-}
+} 

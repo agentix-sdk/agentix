@@ -4,7 +4,7 @@ import type { Action } from "../types/action";
 import { executeAction } from "../utils/actionExecutor";
 import { WalletBase } from "../agent/wallet-base";
 
-export function createSolanaTools<W extends WalletBase>(
+export function createTools<W extends WalletBase>(
   agentix: Agentix<W>,
   actions: Action<W>[],
 ): Record<string, CoreTool> {

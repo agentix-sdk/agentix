@@ -49,8 +49,8 @@ export async function getPrice({
     slippageBps?: number,
 }) {
     const walletClient = agent.wallet;
-    const referrer = agent.config.referrer;
-    const apiKey = agent.config.apiKey;
+    const referrer = agent.config.zeroExReferrer;
+    const apiKey = agent.config.zeroExApiKey;
 
     const queryParams = {
         chainId: walletClient.getChain().id.toString(),
@@ -96,8 +96,8 @@ export async function swap({
     });
 
     const walletClient = agent.wallet;
-    const referrer = agent.config.referrer;
-    const apiKey = agent.config.apiKey;
+    const referrer = agent.config.zeroExReferrer;
+    const apiKey = agent.config.zeroExApiKey;
 
     if (price.issues.allowance !== null) {
         await walletClient.sendTransaction({

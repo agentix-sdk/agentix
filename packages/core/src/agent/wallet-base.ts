@@ -5,54 +5,8 @@ export type Signature = {
     signature: string;
 };
 
-export type Balance = {
-    decimals: number;
-    symbol: string;
-    name: string;
-    value: string;
-    inBaseUnits: string;
-};
-
 export abstract class WalletBase {
     abstract getAddress(): string;
     abstract getChain(): Chain;
     abstract signMessage(message: string): Promise<Signature>;
-    abstract balanceOf(address: string): Promise<Balance>;
-
-    getCoreTools(): any[] {
-        return [
-            // createTool(
-            //     {
-            //         name: "get_address",
-            //         description: "Get the address of the wallet",
-            //         parameters: z.object({}),
-            //     },
-            //     () => this.getAddress(),
-            // ),
-            // createTool(
-            //     {
-            //         name: "get_chain",
-            //         description: "Get the chain of the wallet",
-            //         parameters: z.object({}),
-            //     },
-            //     () => this.getChain(),
-            // ),
-            // createTool(
-            //     {
-            //         name: "get_balance",
-            //         description: "Get the balance of the wallet",
-            //         parameters: z.object({ address: z.string() }),
-            //     },
-            //     (parameters) => this.balanceOf(parameters.address),
-            // ),
-            // createTool(
-            //     {
-            //         name: "sign_message",
-            //         description: "Sign a message with the wallet",
-            //         parameters: z.object({ message: z.string() }),
-            //     },
-            //     (parameters) => this.signMessage(parameters.message),
-            // ),
-        ];
-    }
 }
