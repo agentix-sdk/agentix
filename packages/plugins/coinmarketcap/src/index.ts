@@ -1,9 +1,7 @@
 import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
 
-// Import tools
 import * as cmcTools from "./tools/coinmarketcap";
 
-// Import actions
 import {
     getCryptocurrencyListingsAction,
     getCryptocurrencyQuotesAction,
@@ -17,21 +15,9 @@ import {
     getCryptocurrencyGainersLosersAction
 } from "./actions/coinmarketcap";
 
-/**
- * Options for initializing the CoinMarketCap plugin
- */
-export interface CoinmarketcapPluginOptions {
-    apiKey: string;
-}
-
-/**
- * CoinMarketCap plugin for cryptocurrency data
- */
 class CoinmarketcapPlugin extends PluginBase<EvmWalletBase> {
-    private readonly options: CoinmarketcapPluginOptions;
 
-    constructor(options: CoinmarketcapPluginOptions) {
-        // Register methods for tool access
+    constructor() {
         const methods: Record<string, Function> = {
             getCryptocurrencyListings: cmcTools.getCryptocurrencyListings,
             getCryptocurrencyQuotes: cmcTools.getCryptocurrencyQuotes,
@@ -45,8 +31,7 @@ class CoinmarketcapPlugin extends PluginBase<EvmWalletBase> {
             getCryptocurrencyGainersLosers: cmcTools.getCryptocurrencyGainersLosers
         };
 
-        // Register actions
-        const actions: any[] = [
+        const actions = [
             getCryptocurrencyListingsAction,
             getCryptocurrencyQuotesAction,
             getExchangeListingsAction,
@@ -59,7 +44,6 @@ class CoinmarketcapPlugin extends PluginBase<EvmWalletBase> {
             getCryptocurrencyGainersLosersAction
         ];
 
-        // This plugin supports all EVM chains (it's an API wrapper)
         const supportedChains = [
             {
                 type: "evm",
@@ -67,27 +51,11 @@ class CoinmarketcapPlugin extends PluginBase<EvmWalletBase> {
         ];
 
         super("coinmarketcap", methods, actions, supportedChains);
-        
-        this.options = options;
     }
 
     supportsWallet(wallet: EvmWalletBase): boolean {
         return wallet instanceof EvmWalletBase;
     }
-
-    setup(agentConfig: Record<string, any>) {
-        // Set up CoinMarketCap API key in agent config
-        if (!agentConfig.coinmarketcapApiKey) {
-            agentConfig.coinmarketcapApiKey = this.options.apiKey;
-        }
-    }
 }
 
-/**
- * Create a new CoinMarketCap plugin instance
- */
-export function coinmarketcap(options: CoinmarketcapPluginOptions) {
-    return new CoinmarketcapPlugin(options);
-}
-
-export default coinmarketcap;
+export default CoinmarketcapPlugin;

@@ -1,10 +1,8 @@
 import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
 
-// Import regular CoinGecko tools
 import * as coinGeckoTools from "./tools/coingecko";
 import * as coinGeckoProTools from "./tools/coingecko-pro";
 
-// Import actions
 import {
     getTrendingCoinsAction,
     getCoinPricesAction,
