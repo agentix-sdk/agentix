@@ -1,4 +1,4 @@
-import { Agentix, EvmWalletBase } from "agentix";
+import { Agentix, EvmWalletBase, SolanaWalletBase } from "agentix";
 import { BirdeyeApi } from "../utils/api";
 
 /**
@@ -17,7 +17,7 @@ export async function getTokenPrice({
     chain,
     include_liquidity
 }: {
-    agent: Agentix<EvmWalletBase>,
+    agent: Agentix<EvmWalletBase | SolanaWalletBase>,
     list_address: string[],
     chain: string,
     include_liquidity?: boolean
@@ -48,7 +48,7 @@ export async function getTokenHistoryPrice({
     time_to,
     chain
 }: {
-    agent: Agentix<EvmWalletBase>,
+    agent: Agentix<EvmWalletBase | SolanaWalletBase>,
     address: string,
     address_type?: "token" | "pair",
     type: string,
@@ -93,7 +93,7 @@ export async function getOhlcv({
     time_to,
     chain
 }: {
-    agent: Agentix<EvmWalletBase>,
+    agent: Agentix<EvmWalletBase | SolanaWalletBase>,
     address: string,
     type: string,
     time_from?: number,
@@ -134,7 +134,7 @@ export async function getOhlcvPair({
     limit,
     chain
 }: {
-    agent: Agentix<EvmWalletBase>,
+    agent: Agentix<EvmWalletBase | SolanaWalletBase>,
     pair_address: string,
     type: string,
     limit?: number,
@@ -171,7 +171,7 @@ export async function getTokenSecurity({
     address,
     chain
 }: {
-    agent: Agentix<EvmWalletBase>,
+    agent: Agentix<EvmWalletBase | SolanaWalletBase>,
     address: string,
     chain: string
 }) {
@@ -198,7 +198,7 @@ export async function getTrendingTokens({
     offset,
     limit
 }: {
-    agent: Agentix<EvmWalletBase>,
+    agent: Agentix<EvmWalletBase | SolanaWalletBase>,
     chain: string,
     sort_by: string,
     sort_type: string,
@@ -243,7 +243,7 @@ export async function searchToken({
     offset,
     limit
 }: {
-    agent: Agentix<EvmWalletBase>,
+    agent: Agentix<EvmWalletBase | SolanaWalletBase>,
     keyword: string,
     chain: string,
     sort_by: string,
