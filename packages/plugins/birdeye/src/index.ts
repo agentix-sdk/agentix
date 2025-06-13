@@ -18,7 +18,7 @@ import {
     searchToken,
 } from "./tools/birdeye";
 
-class EvmBirdeyePlugin extends PluginBase<EvmWalletBase | SolanaWalletBase> {
+class BirdeyePlugin extends PluginBase<EvmWalletBase | SolanaWalletBase> {
     constructor() {
         const methods = {
             getTokenPrice,
@@ -57,4 +57,4 @@ class EvmBirdeyePlugin extends PluginBase<EvmWalletBase | SolanaWalletBase> {
     }
 }
 
-export default EvmBirdeyePlugin;
+export default BirdeyePlugin;
