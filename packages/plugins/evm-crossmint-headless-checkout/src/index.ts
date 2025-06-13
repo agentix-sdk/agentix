@@ -1,9 +1,9 @@
-import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
+import { EvmChain, PluginBase, EvmWalletBase, SolanaWalletBase } from "agentix";
 
 import { crossmintBuyTokenAction } from "./actions/crossmintHeadlessCheckoutAction";
 import { buyToken } from "./tools/crossmint_headless_checkout";
 
-class EvmCrossmintHeadlessCheckoutPlugin extends PluginBase<EvmWalletBase> {
+class EvmCrossmintHeadlessCheckoutPlugin extends PluginBase<EvmWalletBase | SolanaWalletBase> {
     constructor() {
         const methods = {
             crossmintBuyToken: buyToken,
@@ -22,8 +22,8 @@ class EvmCrossmintHeadlessCheckoutPlugin extends PluginBase<EvmWalletBase> {
         super("crossmint-headless-checkout", methods, actions, supportedChains);
     }
 
-    supportsWallet(wallet: EvmWalletBase): boolean {
-        return wallet instanceof EvmWalletBase;
+    supportsWallet(wallet: EvmWalletBase | SolanaWalletBase): boolean {
+        return wallet instanceof EvmWalletBase || wallet instanceof SolanaWalletBase;
     }
 }
 
