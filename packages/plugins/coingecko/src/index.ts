@@ -26,20 +26,8 @@ import {
     getTokensInfoByPoolAddressAction
 } from "./actions/coingecko-pro";
 
-/**
- * Options for initializing the CoinGecko plugin
- */
-export interface CoinGeckoPluginOptions {
-    apiKey: string;
-    isPro?: boolean;
-}
-
-/**
- * CoinGecko plugin for cryptocurrency price and market data
- */
 class CoinGeckoPlugin extends PluginBase<EvmWalletBase> {
-    constructor(options: CoinGeckoPluginOptions) {
-        const { apiKey, isPro = false } = options;
+    constructor() {
         
         // Register methods for tool access
         const methods: Record<string, Function> = {
@@ -54,18 +42,15 @@ class CoinGeckoPlugin extends PluginBase<EvmWalletBase> {
             getCoinCategories: coinGeckoTools.getCoinCategories
         };
         
-        // Add pro methods if enabled
-        if (isPro) {
-            methods.getPoolDataByPoolAddress = coinGeckoProTools.getPoolDataByPoolAddress;
-            methods.getTrendingPools = coinGeckoProTools.getTrendingPools;
-            methods.getTrendingPoolsByNetwork = coinGeckoProTools.getTrendingPoolsByNetwork;
-            methods.getTopGainersLosers = coinGeckoProTools.getTopGainersLosers;
-            methods.getTokenDataByTokenAddress = coinGeckoProTools.getTokenDataByTokenAddress;
-            methods.getTokensInfoByPoolAddress = coinGeckoProTools.getTokensInfoByPoolAddress;
-        }
+        methods.getPoolDataByPoolAddress = coinGeckoProTools.getPoolDataByPoolAddress;
+        methods.getTrendingPools = coinGeckoProTools.getTrendingPools;
+        methods.getTrendingPoolsByNetwork = coinGeckoProTools.getTrendingPoolsByNetwork;
+        methods.getTopGainersLosers = coinGeckoProTools.getTopGainersLosers;
+        methods.getTokenDataByTokenAddress = coinGeckoProTools.getTokenDataByTokenAddress;
+        methods.getTokensInfoByPoolAddress = coinGeckoProTools.getTokensInfoByPoolAddress;
         
         // Register actions
-        const actions: any[] = [
+        const actions = [
             getTrendingCoinsAction,
             getCoinPricesAction,
             searchCoinsAction,
@@ -77,17 +62,14 @@ class CoinGeckoPlugin extends PluginBase<EvmWalletBase> {
             getCoinCategoriesAction
         ];
         
-        // Add pro actions if enabled
-        if (isPro) {
-            actions.push(
-                getPoolDataByPoolAddressAction,
-                getTrendingPoolsAction,
-                getTrendingPoolsByNetworkAction,
-                getTopGainersLosersAction,
-                getTokenDataByTokenAddressAction,
-                getTokensInfoByPoolAddressAction
-            );
-        }
+        actions.push(
+            getPoolDataByPoolAddressAction,
+            getTrendingPoolsAction,
+            getTrendingPoolsByNetworkAction,
+            getTopGainersLosersAction,
+            getTokenDataByTokenAddressAction,
+            getTokensInfoByPoolAddressAction
+        );
         
         // Support all EVM chains
         const supportedChains = [
@@ -102,32 +84,6 @@ class CoinGeckoPlugin extends PluginBase<EvmWalletBase> {
     supportsWallet(wallet: EvmWalletBase): boolean {
         return wallet instanceof EvmWalletBase;
     }
-    
-    setup(agentConfig: Record<string, any>) {
-        // Set up CoinGecko API key in agent config
-        if (!agentConfig.coingeckoApiKey) {
-            agentConfig.coingeckoApiKey = this.getOptions().apiKey;
-        }
-        
-        // Set isPro flag
-        if (!agentConfig.coingeckoIsPro) {
-            agentConfig.coingeckoIsPro = this.getOptions().isPro || false;
-        }
-    }
-    
-    private getOptions(): CoinGeckoPluginOptions {
-        return {
-            apiKey: (this as any).options?.apiKey || "",
-            isPro: (this as any).options?.isPro || false
-        };
-    }
 }
 
-/**
- * Create a new CoinGecko plugin instance
- */
-export function coingecko(options: CoinGeckoPluginOptions) {
-    return new CoinGeckoPlugin(options);
-}
-
-export default coingecko;
+export default CoinGeckoPlugin;
