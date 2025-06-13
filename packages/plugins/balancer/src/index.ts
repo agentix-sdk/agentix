@@ -2,7 +2,7 @@ import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
 import { addLiquidityAction, balancerSwapAction, removeLiquidityAction } from "./actions";
 import { addLiquidity, removeLiquidity, swapOnBalancer } from "./tools";
 
-class EvmBalancerPlugin extends PluginBase<EvmWalletBase> {
+class BalancerPlugin extends PluginBase<EvmWalletBase> {
     constructor() {
         const methods = {
             balancerSwap: swapOnBalancer,
@@ -40,4 +40,4 @@ class EvmBalancerPlugin extends PluginBase<EvmWalletBase> {
     }
 }
 
-export default EvmBalancerPlugin;
+export default BalancerPlugin;
