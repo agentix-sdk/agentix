@@ -1,5 +1,5 @@
 {
-  "name": "@agentix/plugin-evm-hyperlane",
+  "name": "@agentix/farcaster",
   "version": "1.0.0",
   "type": "module",
   "publishConfig": {
@@ -32,10 +32,10 @@
     "type": "git",
     "url": "https://github.com/agentix-sdk/agentix.git"
   },
-  "homepage": "https://github.com/agentix-sdk/agentix/tree/main/packages/plugins/evm-hyperlane",
+  "homepage": "https://github.com/agentix-sdk/agentix/tree/main/packages/plugins/farcaster",
   "keywords": [
     "evm",
-    "hyperlane",
+    "farcaster",
     "agentix",
     "plugin",
     "defi",

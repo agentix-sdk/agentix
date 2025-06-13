@@ -1,5 +1,5 @@
 {
-  "name": "@agentix/plugin-evm-erc1155",
+  "name": "@agentix/hyperlane",
   "version": "1.0.0",
   "type": "module",
   "publishConfig": {
@@ -32,10 +32,10 @@
     "type": "git",
     "url": "https://github.com/agentix-sdk/agentix.git"
   },
-  "homepage": "https://github.com/agentix-sdk/agentix/tree/main/packages/plugins/evm-erc1155",
+  "homepage": "https://github.com/agentix-sdk/agentix/tree/main/packages/plugins/hyperlane",
   "keywords": [
     "evm",
-    "erc1155",
+    "hyperlane",
     "agentix",
     "plugin",
     "defi",

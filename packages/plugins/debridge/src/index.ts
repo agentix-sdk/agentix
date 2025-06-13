@@ -1,6 +1,6 @@
 import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
 
-class EvmDebridgePlugin extends PluginBase<EvmWalletBase> {
+class DebridgePlugin extends PluginBase<EvmWalletBase> {
     constructor() {
         const methods = {
         };
@@ -22,4 +22,4 @@ class EvmDebridgePlugin extends PluginBase<EvmWalletBase> {
     }
 }
 
-export default EvmDebridgePlugin;
+export default DebridgePlugin;

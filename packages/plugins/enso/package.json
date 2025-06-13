@@ -1,5 +1,5 @@
 {
-  "name": "@agentix/plugin-evm-ens",
+  "name": "@agentix/enso",
   "version": "1.0.0",
   "type": "module",
   "publishConfig": {
@@ -32,10 +32,10 @@
     "type": "git",
     "url": "https://github.com/agentix-sdk/agentix.git"
   },
-  "homepage": "https://github.com/agentix-sdk/agentix/tree/main/packages/plugins/evm-ens",
+  "homepage": "https://github.com/agentix-sdk/agentix/tree/main/packages/plugins/enso",
   "keywords": [
     "evm",
-    "ens",
+    "enso",
     "agentix",
     "plugin",
     "defi",

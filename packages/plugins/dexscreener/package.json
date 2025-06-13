@@ -1,5 +1,5 @@
 {
-  "name": "@agentix/plugin-evm-erc20",
+  "name": "@agentix/dexscreener",
   "version": "1.0.0",
   "type": "module",
   "publishConfig": {
@@ -32,10 +32,10 @@
     "type": "git",
     "url": "https://github.com/agentix-sdk/agentix.git"
   },
-  "homepage": "https://github.com/agentix-sdk/agentix/tree/main/packages/plugins/evm-erc20",
+  "homepage": "https://github.com/agentix-sdk/agentix/tree/main/packages/plugins/dexscreener",
   "keywords": [
     "evm",
-    "erc20",
+    "dexscreener",
     "agentix",
     "plugin",
     "defi",
@@ -45,8 +45,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "agentix": "workspace:*",
-    "zod": "^3.24.1",
-    "abitype": "^1.0.6"
+    "zod": "^3.24.1"
   },
   "peerDependencies": {
     "agentix": "workspace:*"
