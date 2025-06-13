@@ -1,8 +1,8 @@
-import { Action, EvmWalletBase } from "agentix";
+import { Action, StarknetWalletBase } from "agentix";
 import { z } from "zod";
 import { executeTokenSwap } from "../tools/avnu";
 
-export const avnuSwapAction: Action<EvmWalletBase> = {
+export const avnuSwapAction: Action<StarknetWalletBase> = {
     name: "AVNU_TOKEN_SWAP",
     similes: [
         "swap tokens using Avnu",
@@ -51,8 +51,6 @@ export const avnuSwapAction: Action<EvmWalletBase> = {
     }),
     handler: async (agent, input: Record<string, any>) => {
         try {
-            // Note: executeTokenSwap currently throws an error because this plugin
-            // is configured for EVM but Avnu requires Starknet
             const swapResult = await executeTokenSwap({
                 agent,
                 sellTokenAddress: input.sellTokenAddress,
@@ -64,9 +62,7 @@ export const avnuSwapAction: Action<EvmWalletBase> = {
             return {
                 status: "success",
                 message: `Successfully executed token swap on Avnu`,
-                // The actual transaction hash would come from the swap result
-                // but since our implementation throws an error, this is unreachable
-                transactionHash: "0x", 
+                transactionHash: swapResult.transactionHash,
             };
         } catch (error: any) {
             return {

@@ -1,8 +1,8 @@
-import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
+import { StarknetChain, PluginBase, StarknetWalletBase } from "agentix";
 import { avnuSwapAction } from "./actions";
 import { executeTokenSwap } from "./tools";
 
-class EvmAvnuPlugin extends PluginBase<EvmWalletBase> {
+class StarknetAvnuPlugin extends PluginBase<StarknetWalletBase> {
     constructor() {
         const methods = {
             executeAvnuSwap: executeTokenSwap,
@@ -14,16 +14,16 @@ class EvmAvnuPlugin extends PluginBase<EvmWalletBase> {
 
         const supportedChains = [
             {
-                type: "evm",
-            } as EvmChain
+                type: "starknet",
+            } as StarknetChain
         ];
 
         super("avnu", methods, actions, supportedChains);
     }
 
-    supportsWallet(wallet: EvmWalletBase): boolean {
-        return wallet instanceof EvmWalletBase;
+    supportsWallet(wallet: StarknetWalletBase): boolean {
+        return wallet instanceof StarknetWalletBase;
     }
 }
 
-export default EvmAvnuPlugin;
+export default StarknetAvnuPlugin;

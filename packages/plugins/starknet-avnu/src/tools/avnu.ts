@@ -1,7 +1,6 @@
-import { EvmWalletBase } from "agentix";
+import { StarknetWalletBase } from "agentix";
 import { Agentix } from "agentix";
 import { fetchQuotes, executeSwap, type Quote } from "@avnu/avnu-sdk";
-import { SwapConfigParams } from "../types";
 
 /**
  * Get the best quote for a token swap on Avnu
@@ -54,7 +53,7 @@ export async function executeTokenSwap({
     sellAmount,
     slippage = 0.3
 }: {
-    agent: Agentix<EvmWalletBase>,
+    agent: Agentix<StarknetWalletBase>,
     sellTokenAddress: string,
     buyTokenAddress: string,
     sellAmount: string,
@@ -71,26 +70,19 @@ export async function executeTokenSwap({
             baseUrl
         });
         
-        const bestQuote = quotes[0]; // Assuming the first quote is the best one
+        const bestQuote = quotes[0];
+
+        const swapResponse = await executeSwap(
+            walletClient.getAccount(),
+            bestQuote,
+            {
+                executeApprove: true,
+                slippage,
+            },
+            { baseUrl }
+        );
         
-        // Note: This function call will need to be adapted when Starknet wallet support is available
-        // For now, we're leaving it as a placeholder since the plugin is named evm-avnu but requires a Starknet wallet
-        
-        // This is a placeholder - in reality, we would need to use a Starknet account here
-        // const swapResponse = await executeSwap(
-        //     walletClient.getAccount(),
-        //     bestQuote,
-        //     {
-        //         executeApprove: true,
-        //         slippage,
-        //     },
-        //     { baseUrl }
-        // );
-        
-        // For now, we'll throw an error indicating this needs a Starknet wallet
-        throw new Error("Avnu swaps require a Starknet wallet, but this plugin is configured for EVM wallets");
-        
-        // return swapResponse;
+        return swapResponse;
     } catch (error) {
         throw error instanceof Error
             ? new Error(`Error executing swap: ${error.message}`)
