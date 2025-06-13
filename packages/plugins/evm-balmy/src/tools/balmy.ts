@@ -1,7 +1,6 @@
 import { EvmWalletBase } from "agentix";
 import { Agentix } from "agentix";
-import { buildSDK } from "@balmy/sdk";
-import { ExecuteSwapParams, GetQuoteParams, QuoteRequest } from "../types";
+import { buildSDK, QuoteRequest } from "@balmy/sdk";
 
 /**
  * Initialize the Balmy SDK

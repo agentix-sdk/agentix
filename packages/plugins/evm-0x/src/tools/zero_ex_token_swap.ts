@@ -1,6 +1,6 @@
 import { EvmWalletBase } from "agentix";
 import { Agentix } from "agentix";
-import { erc20Abi, maxUint256, concat, numberToHex, size, Hex } from "viem";
+import { erc20Abi, maxUint256 } from "viem";
 
 /**
  * Make a request to the 0x API with the specified path and query parameters
@@ -100,8 +100,8 @@ export async function swap({
     const apiKey = agent.config.zeroExApiKey;
 
     if (price?.issues?.allowance?.spender) {
-        await walletClient.read({
-            address: sellToken,
+        await walletClient.sendTransaction({
+            to: sellToken,
             abi: erc20Abi,
             functionName: "approve",
             args: [price.issues.allowance.spender, maxUint256],

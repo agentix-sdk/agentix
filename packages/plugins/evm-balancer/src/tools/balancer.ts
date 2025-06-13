@@ -26,7 +26,6 @@ import {
     InputAmount,
     ExactInQueryOutput
 } from "@balancer/sdk";
-import { LiquidityParameters, RemoveLiquidityParameters, SwapParameters } from "../types";
 
 /**
  * Get a Balancer API client for the specified chain
@@ -92,7 +91,7 @@ export async function swapOnBalancer({
 
     const queryOutput = (await swap.query(rpcUrl)) as ExactInQueryOutput;
 
-    const slippageObj = Slippage.fromPercentage(`${slippage}`);
+    const slippageObj = Slippage.fromPercentage(`${Number(slippage)}`);
 
     // Check if Permit2 is approved
     const allowance = await walletClient.read({
@@ -239,7 +238,7 @@ export async function addLiquidity({
         chainId,
         rpcUrl,
         amountsIn,
-        kind: kind === "Exact" ? AddLiquidityKind.Exact : AddLiquidityKind.Unbalanced,
+        kind: AddLiquidityKind.Unbalanced,
     };
 
     const addLiquidityInstance = new AddLiquidity();
@@ -247,7 +246,7 @@ export async function addLiquidity({
 
     const call = addLiquidityInstance.buildCall({
         ...queryOutput,
-        slippage: Slippage.fromPercentage(`${slippage}`),
+        slippage: Slippage.fromPercentage(`${Number(slippage)}`),
         chainId,
         wethIsEth,
     });
@@ -306,7 +305,7 @@ export async function removeLiquidity({
         chainId,
         rpcUrl,
         bptIn,
-        kind: kind === "Single" ? RemoveLiquidityKind.Single : RemoveLiquidityKind.Proportional,
+        kind: RemoveLiquidityKind.Proportional,
     };
 
     const removeLiquidityInstance = new RemoveLiquidity();
@@ -314,7 +313,7 @@ export async function removeLiquidity({
 
     const call = removeLiquidityInstance.buildCall({
         ...queryOutput,
-        slippage: Slippage.fromPercentage(`${slippage}`),
+        slippage: Slippage.fromPercentage(`${Number(slippage)}`),
         chainId,
         wethIsEth,
     });
