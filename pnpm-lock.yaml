@@ -145,7 +145,7 @@ importers:
         specifier: ^5.3.3
         version: 5.8.3
 
-  packages/plugins/evm-0x:
+  packages/plugins/0x:
     dependencies:
       agentix:
         specifier: workspace:*
@@ -157,7 +157,7 @@ importers:
         specifier: ^3.24.1
         version: 3.24.3
 
-  packages/plugins/evm-1inch:
+  packages/plugins/1inch:
     dependencies:
       agentix:
         specifier: workspace:*
@@ -166,7 +166,7 @@ importers:
         specifier: ^3.24.1
         version: 3.24.3
 
-  packages/plugins/evm-allora:
+  packages/plugins/allora:
     dependencies:
       agentix:
         specifier: workspace:*
@@ -178,7 +178,7 @@ importers:
         specifier: ^3.24.1
         version: 3.24.3
 
-  packages/plugins/evm-balancer:
+  packages/plugins/balancer:
     dependencies:
       '@balancer/sdk':
         specifier: 2.4.0
@@ -193,7 +193,7 @@ importers:
         specifier: ^3.24.1
         version: 3.24.3
 
-  packages/plugins/evm-balmy:
+  packages/plugins/balmy:
     dependencies:
       '@balmy/sdk':
         specifier: 0.6.1
@@ -208,7 +208,7 @@ importers:
         specifier: ^3.24.1
         version: 3.24.3
 
-  packages/plugins/evm-betswirl:
+  packages/plugins/betswirl:
     dependencies:
       '@betswirl/sdk-core':
         specifier: 0.0.2
@@ -223,7 +223,7 @@ importers:
         specifier: ^3.24.1
         version: 3.24.3
 
-  packages/plugins/evm-birdeye:
+  packages/plugins/birdeye:
     dependencies:
       agentix:
         specifier: workspace:*
@@ -232,7 +232,7 @@ importers:
         specifier: ^3.24.1
         version: 3.24.3
 
-  packages/plugins/evm-bmx:
+  packages/plugins/bmx:
     dependencies:
       agentix:
         specifier: workspace:*
@@ -244,7 +244,7 @@ importers:
         specifier: ^3.24.1
         version: 3.24.3
 
-  packages/plugins/evm-coingecko:
+  packages/plugins/coingecko:
     dependencies:
       agentix:
         specifier: workspace:*
@@ -253,7 +253,7 @@ importers:
         specifier: ^3.24.1
         version: 3.24.3
 
-  packages/plugins/evm-coinmarketcap:
+  packages/plugins/coinmarketcap:
     dependencies:
       agentix:
         specifier: workspace:*
@@ -262,7 +262,7 @@ importers:
         specifier: ^3.24.1
         version: 3.24.3
 
-  packages/plugins/evm-cosmosbank:
+  packages/plugins/cosmosbank:
     dependencies:
       '@cosmjs/stargate':
         specifier: ^0.32.4
@@ -280,7 +280,7 @@ importers:
         specifier: ^3.24.1
         version: 3.24.3
 
-  packages/plugins/evm-crossmint-headless-checkout:
+  packages/plugins/crossmint-headless-checkout:
     dependencies:
       '@crossmint/client-sdk-base':
         specifier: 1.5.4
@@ -304,11 +304,14 @@ importers:
         specifier: ^3.24.1
         version: 3.24.3
 
-  packages/plugins/evm-curves:
+  packages/plugins/curves:
     dependencies:
       agentix:
         specifier: workspace:*
         version: link:../../core
+      viem:
+        specifier: 2.23.4
+        version: 2.23.4(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.3)
       zod:
         specifier: ^3.24.1
         version: 3.24.3

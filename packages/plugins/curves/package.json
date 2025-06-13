@@ -1,5 +1,5 @@
 {
-  "name": "@agentix/plugin-evm-curves",
+  "name": "@agentix/curves",
   "version": "1.0.0",
   "type": "module",
   "publishConfig": {
@@ -32,7 +32,7 @@
     "type": "git",
     "url": "https://github.com/agentix-sdk/agentix.git"
   },
-  "homepage": "https://github.com/agentix-sdk/agentix/tree/main/packages/plugins/evm-curves",
+  "homepage": "https://github.com/agentix-sdk/agentix/tree/main/packages/plugins/curves",
   "keywords": [
     "evm",
     "curves",
@@ -45,7 +45,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "agentix": "workspace:*",
-    "zod": "^3.24.1"
+    "zod": "^3.24.1",
+    "viem": "2.23.4"
   },
   "peerDependencies": {
     "agentix": "workspace:*"
