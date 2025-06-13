@@ -7,6 +7,7 @@ import {
     AlloraPricePredictionTimeframe,
     AlloraPricePredictionToken,
 } from "../types";
+import axios from "axios";
 
 /**
  * Client for interacting with the Allora API
@@ -51,20 +52,16 @@ class AlloraAPIClient {
             headers["x-api-key"] = this.apiKey;
         }
 
-        const response = await fetch(url, { 
-            method: 'GET',
-            headers 
-        });
-
-        if (!response.ok) {
+        const response = await axios.get(url, { headers });
+        if (response.status >= 400) {
             throw new Error(
                 `Allora plugin: error requesting price prediction: url=${url} status=${
                     response.status
-                } body=${await response.text()}`
+                } body=${JSON.stringify(response.data, null, 4)}`,
             );
         }
 
-        return await response.json();
+        return response.data;
     }
 }
 

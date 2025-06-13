@@ -171,6 +171,9 @@ importers:
       agentix:
         specifier: workspace:*
         version: link:../../core
+      axios:
+        specifier: 1.9.0
+        version: 1.9.0
       zod:
         specifier: ^3.24.1
         version: 3.24.3
