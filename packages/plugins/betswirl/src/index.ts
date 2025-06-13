@@ -2,7 +2,7 @@ import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
 import { coinTossAction, diceAction, getBetAction, getBetsAction, rouletteAction } from "./actions";
 import { getBetByHash, getBetsList, playCoinToss, playDice, playRoulette } from "./tools";
 
-class EvmBetswirlPlugin extends PluginBase<EvmWalletBase> {
+class BetswirlPlugin extends PluginBase<EvmWalletBase> {
     constructor() {
         const methods = {
             playCoinToss,
@@ -35,4 +35,4 @@ class EvmBetswirlPlugin extends PluginBase<EvmWalletBase> {
     }
 }
 
-export default EvmBetswirlPlugin;
+export default BetswirlPlugin;
