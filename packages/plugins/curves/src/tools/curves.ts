@@ -93,7 +93,7 @@ export async function buyCurvesToken({
     amount?: number;
 }) {
     const walletClient = agent.wallet;
-    const curvesAddress = agent.config.curvesAddress || process.env.CURVES_CONTRACT_ADDRESS;
+    const curvesAddress = agent.config.curvesAddress;
     
     if (!curvesAddress) {
         throw new CurvesPluginError("Curves contract address not configured");
@@ -155,7 +155,7 @@ export async function getBuyPrice({
     unit?: "wei" | "gwei" | "eth";
 }) {
     const walletClient = agent.wallet;
-    const curvesAddress = agent.config.curvesAddress || process.env.CURVES_CONTRACT_ADDRESS;
+    const curvesAddress = agent.config.curvesAddress;
     
     if (!curvesAddress) {
         throw new CurvesPluginError("Curves contract address not configured");
@@ -210,7 +210,7 @@ export async function sellCurvesToken({
     amount?: number;
 }) {
     const walletClient = agent.wallet;
-    const curvesAddress = agent.config.curvesAddress || process.env.CURVES_CONTRACT_ADDRESS;
+    const curvesAddress = agent.config.curvesAddress;
     
     if (!curvesAddress) {
         throw new CurvesPluginError("Curves contract address not configured");
@@ -251,7 +251,7 @@ export async function getSellPrice({
     unit?: "wei" | "gwei" | "eth";
 }) {
     const walletClient = agent.wallet;
-    const curvesAddress = agent.config.curvesAddress || process.env.CURVES_CONTRACT_ADDRESS;
+    const curvesAddress = agent.config.curvesAddress;
     
     if (!curvesAddress) {
         throw new CurvesPluginError("Curves contract address not configured");
@@ -304,7 +304,7 @@ export async function getCurvesERC20({
     subject?: string;
 }) {
     const walletClient = agent.wallet;
-    const curvesAddress = agent.config.curvesAddress || process.env.CURVES_CONTRACT_ADDRESS;
+    const curvesAddress = agent.config.curvesAddress;
     
     if (!curvesAddress) {
         throw new CurvesPluginError("Curves contract address not configured");
@@ -347,7 +347,7 @@ export async function getCurvesBalance({
     subject: string;
 }) {
     const walletClient = agent.wallet;
-    const curvesAddress = agent.config.curvesAddress || process.env.CURVES_CONTRACT_ADDRESS;
+    const curvesAddress = agent.config.curvesAddress;
     
     if (!curvesAddress) {
         throw new CurvesPluginError("Curves contract address not configured");
@@ -386,7 +386,7 @@ export async function withdrawCurves({
     amount?: number;
 }) {
     const walletClient = agent.wallet;
-    const curvesAddress = agent.config.curvesAddress || process.env.CURVES_CONTRACT_ADDRESS;
+    const curvesAddress = agent.config.curvesAddress;
     
     if (!curvesAddress) {
         throw new CurvesPluginError("Curves contract address not configured");
@@ -425,7 +425,7 @@ export async function depositCurves({
     amount?: string;
 }) {
     const walletClient = agent.wallet;
-    const curvesAddress = agent.config.curvesAddress || process.env.CURVES_CONTRACT_ADDRESS;
+    const curvesAddress = agent.config.curvesAddress;
     
     if (!curvesAddress) {
         throw new CurvesPluginError("Curves contract address not configured");
@@ -467,7 +467,7 @@ export async function mintCurvesERC20({
     symbol: string;
 }) {
     const walletClient = agent.wallet;
-    const curvesAddress = agent.config.curvesAddress || process.env.CURVES_CONTRACT_ADDRESS;
+    const curvesAddress = agent.config.curvesAddress;
     
     if (!curvesAddress) {
         throw new CurvesPluginError("Curves contract address not configured");
