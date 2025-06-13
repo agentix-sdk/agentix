@@ -15,7 +15,7 @@ export async function getAggregatedBalancesAndAllowances({
 }): Promise<AggregatedBalancesAndAllowancesResponse> {
     const walletClient = agent.wallet;
     const apiKey = agent.config.oneInchApiKey;
-    const baseUrl = "https://api.1inch.dev";
+    const baseUrl = agent.config.oneInchBaseUrl ?? "https://api.1inch.dev";
     const chainId = walletClient.getChain().id;
 
     const url = new URL(
