@@ -2,7 +2,7 @@ import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
 import { alloraPricePredictionAction } from "./actions";
 import { getPricePrediction } from "./tools";
 
-class EvmAlloraPlugin extends PluginBase<EvmWalletBase> {
+class AlloraPlugin extends PluginBase<EvmWalletBase> {
     constructor() {
         const methods = {
             getAlloraPricePrediction: getPricePrediction,
@@ -26,4 +26,4 @@ class EvmAlloraPlugin extends PluginBase<EvmWalletBase> {
     }
 }
 
-export default EvmAlloraPlugin;
+export default AlloraPlugin;
