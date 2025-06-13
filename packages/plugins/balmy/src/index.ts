@@ -2,7 +2,7 @@ import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
 import { balmyExecuteSwapAction, balmyGetQuoteAction } from "./actions";
 import { executeSwap, getQuote } from "./tools";
 
-class EvmBalmyPlugin extends PluginBase<EvmWalletBase> {
+class BalmyPlugin extends PluginBase<EvmWalletBase> {
     constructor() {
         const methods = {
             getBalmyQuote: getQuote,
@@ -28,4 +28,4 @@ class EvmBalmyPlugin extends PluginBase<EvmWalletBase> {
     }
 }
 
-export default EvmBalmyPlugin;
+export default BalmyPlugin;
