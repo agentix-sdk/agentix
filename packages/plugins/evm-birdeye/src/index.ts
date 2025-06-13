@@ -1,6 +1,6 @@
-import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
+import { EvmChain, PluginBase, EvmWalletBase, SolanaWalletBase } from "agentix";
 
-class EvmBirdeyePlugin extends PluginBase<EvmWalletBase> {
+class EvmBirdeyePlugin extends PluginBase<EvmWalletBase | SolanaWalletBase> {
     constructor() {
         const methods = {
         };
@@ -17,8 +17,8 @@ class EvmBirdeyePlugin extends PluginBase<EvmWalletBase> {
         super("birdeye", methods, actions, supportedChains);
     }
 
-    supportsWallet(wallet: EvmWalletBase): boolean {
-        return wallet instanceof EvmWalletBase;
+    supportsWallet(wallet: EvmWalletBase | SolanaWalletBase): boolean {
+        return wallet instanceof EvmWalletBase || wallet instanceof SolanaWalletBase;
     }
 }
 

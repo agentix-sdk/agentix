@@ -1,13 +1,4 @@
 import { Agentix, EvmWalletBase } from "agentix";
-import { 
-    GetTokenPriceParams, 
-    GetTokenHistoryPriceParams, 
-    GetOhlcvParams, 
-    GetOhlcvPairParams,
-    GetTokenSecurityParams,
-    GetTrendingTokensParams,
-    SearchTokenParams
-} from "../types";
 import { BirdeyeApi } from "../utils/api";
 
 /**
