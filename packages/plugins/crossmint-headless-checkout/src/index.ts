@@ -1,9 +1,9 @@
-import { EvmChain, PluginBase, EvmWalletBase, SolanaWalletBase } from "agentix";
+import { EvmChain, PluginBase, EvmWalletBase, SolanaWalletBase, SolanaChain } from "agentix";
 
 import { crossmintBuyTokenAction } from "./actions/crossmintHeadlessCheckoutAction";
 import { buyToken } from "./tools/crossmint_headless_checkout";
 
-class EvmCrossmintHeadlessCheckoutPlugin extends PluginBase<EvmWalletBase | SolanaWalletBase> {
+class CrossmintHeadlessCheckoutPlugin extends PluginBase<EvmWalletBase | SolanaWalletBase> {
     constructor() {
         const methods = {
             crossmintBuyToken: buyToken,
@@ -16,7 +16,10 @@ class EvmCrossmintHeadlessCheckoutPlugin extends PluginBase<EvmWalletBase | Sola
         const supportedChains = [
             {
                 type: "evm",
-            } as EvmChain
+            } as EvmChain,
+            {
+                type: "solana",
+            } as SolanaChain
         ];
 
         super("crossmint-headless-checkout", methods, actions, supportedChains);
@@ -27,4 +30,4 @@ class EvmCrossmintHeadlessCheckoutPlugin extends PluginBase<EvmWalletBase | Sola
     }
 }
 
-export default EvmCrossmintHeadlessCheckoutPlugin;
+export default CrossmintHeadlessCheckoutPlugin;
