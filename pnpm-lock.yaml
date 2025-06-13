@@ -178,21 +178,6 @@ importers:
         specifier: ^3.24.1
         version: 3.24.3
 
-  packages/plugins/evm-avnu:
-    dependencies:
-      '@avnu/avnu-sdk':
-        specifier: ^3.0.2
-        version: 3.0.2(ethers@6.14.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(moment@2.30.1)(qs@6.13.0)(starknet@6.24.1)
-      agentix:
-        specifier: workspace:*
-        version: link:../../core
-      starknet:
-        specifier: ^6.11.0
-        version: 6.24.1
-      zod:
-        specifier: ^3.24.1
-        version: 3.24.3
-
   packages/plugins/evm-balancer:
     dependencies:
       '@balancer/sdk':
@@ -297,9 +282,24 @@ importers:
 
   packages/plugins/evm-crossmint-headless-checkout:
     dependencies:
+      '@crossmint/client-sdk-base':
+        specifier: 1.5.4
+        version: 1.5.4
+      '@crossmint/common-sdk-base':
+        specifier: 0.7.1
+        version: 0.7.1
+      '@solana/web3.js':
+        specifier: ^1.98.0
+        version: 1.98.2(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)
       agentix:
         specifier: workspace:*
         version: link:../../core
+      bs58:
+        specifier: ^6.0.0
+        version: 6.0.0
+      viem:
+        specifier: ^2.23.4
+        version: 2.23.4(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.3)
       zod:
         specifier: ^3.24.1
         version: 3.24.3
@@ -1123,6 +1123,21 @@ importers:
         specifier: ^3.24.1
         version: 3.24.3
 
+  packages/plugins/starknet-avnu:
+    dependencies:
+      '@avnu/avnu-sdk':
+        specifier: ^3.0.2
+        version: 3.0.2(ethers@6.14.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(moment@2.30.1)(qs@6.13.0)(starknet@6.24.1)
+      agentix:
+        specifier: workspace:*
+        version: link:../../core
+      starknet:
+        specifier: ^6.11.0
+        version: 6.24.1
+      zod:
+        specifier: ^3.24.1
+        version: 3.24.3
+
   packages/plugins/token:
     dependencies:
       agentix:
@@ -1537,9 +1552,29 @@ packages:
   '@cosmjs/utils@0.32.4':
     resolution: {integrity: sha512-D1Yc+Zy8oL/hkUkFUL/bwxvuDBzRGpc4cF7/SkdhxX4iHpSLgdOuTt1mhCh9+kl6NQREy9t7SYZ6xeW5gFe60w==}
 
+  '@crossmint/client-sdk-base@1.5.4':
+    resolution: {integrity: sha512-+P0LWuYpxU+NnRh/6xTOFG66AJjdwj0DCmjCqRh6RxMHiem50sVtUEVgldEYSB7ftnw/ksVqmNDsjd2AdPVBYA==}
+
+  '@crossmint/client-sdk-window@1.0.0':
+    resolution: {integrity: sha512-plzEzSYsJtQUpfyAVElWcUncp74/p1HI8aujH5f2FFdSbc85e3Q17TnQWRn9Gtj9KNpCuIsh36HCTMv8x5504g==}
+
+  '@crossmint/common-sdk-base@0.7.1':
+    resolution: {integrity: sha512-easHd5Vl8jTqQHZjJli701jvd99FmkTgVJGEenndW+wTMD2qtY6jAIIoORI17O1m66GlywWC+rLP+VBBmqsQow==}
+
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
     engines: {node: '>=12'}
+
+  '@datadog/browser-core@4.42.2':
+    resolution: {integrity: sha512-LnkcdFyNRpMEuvV1ePfKdgRvYh+VqqAiVRoAmgObcuzdYdIwQSfcJp4GFbBgr5v7uF2uhAp/b96MIyKlqi0Ixg==}
+
+  '@datadog/browser-logs@4.42.2':
+    resolution: {integrity: sha512-idl9DilUGmWbmYb1D6VPmkpnhqaIdsQ08qjOw1c0QbtGUAFlFYyFCrugf2qwMt8QbJ8DqvEiwULTVAZOV9O4kA==}
+    peerDependencies:
+      '@datadog/browser-rum': 4.42.2
+    peerDependenciesMeta:
+      '@datadog/browser-rum':
+        optional: true
 
   '@drift-labs/sdk@2.108.0-beta.6':
     resolution: {integrity: sha512-3bq1FO8Zuv5uvGsQqL58Er5+cWxz/H2FHG6BZKfKZDGv/xBpvLdYZIFWZBXrQ3Md8qa9D0DI44NMsWTrCOA8HQ==}
@@ -4067,6 +4102,9 @@ packages:
     resolution: {integrity: sha512-XYfuKMvj4O35f/pOXLObndIRvyQ+/+6AhODh+OKWj9S9498pHHn/IMszH+gt0fBCRWMNfk1ZSp5x3AifmnI2vg==}
     engines: {node: '>=6'}
 
+  exponential-backoff@3.1.1:
+    resolution: {integrity: sha512-dX7e/LHVJ6W3DE1MHWi9S1EYzDESENfLrYohG2G++ovZrYOkm4Knwa0mc1cn84xJOR4KEU0WSchhLbd0UklbHw==}
+
   exponential-backoff@3.1.2:
     resolution: {integrity: sha512-8QxYTVXUkuy7fIIoitQkPwGonB8F3Zj8eEO8Sqg9Zv/bkI7RJAzowee4gr81Hak/dUTpA2Z7VfQgoijjPNlUZA==}
 
@@ -6270,6 +6308,10 @@ packages:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
 
+  uuid@9.0.1:
+    resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
+    hasBin: true
+
   v8-compile-cache-lib@3.0.1:
     resolution: {integrity: sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==}
 
@@ -6465,6 +6507,9 @@ packages:
     resolution: {integrity: sha512-/AuWwMP+YqiPbsJx5D6TfgRTc4kTLjsh5SOcd4bLsfUg2RcEXrFMJl1DGgdHy2aCfsIA/cr/1JM0xcB2GZji8g==}
     peerDependencies:
       zod: ^3.24.1
+
+  zod@3.22.4:
+    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
 
   zod@3.24.3:
     resolution: {integrity: sha512-HhY1oqzWCQWuUqvBFnsyrtZRhyPeR7SUGv+C4+MsisMuVfSPx8HpwWqH8tRahSlt6M3PiFAcoeFhZAqIXTxoSg==}
@@ -7276,9 +7321,35 @@ snapshots:
 
   '@cosmjs/utils@0.32.4': {}
 
+  '@crossmint/client-sdk-base@1.5.4':
+    dependencies:
+      '@crossmint/client-sdk-window': 1.0.0
+      '@crossmint/common-sdk-base': 0.7.1
+      '@datadog/browser-logs': 4.42.2
+      exponential-backoff: 3.1.1
+      uuid: 9.0.1
+      zod: 3.22.4
+    transitivePeerDependencies:
+      - '@datadog/browser-rum'
+
+  '@crossmint/client-sdk-window@1.0.0':
+    dependencies:
+      zod: 3.22.4
+
+  '@crossmint/common-sdk-base@0.7.1':
+    dependencies:
+      bs58: 5.0.0
+      tweetnacl: 1.0.3
+
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
+
+  '@datadog/browser-core@4.42.2': {}
+
+  '@datadog/browser-logs@4.42.2':
+    dependencies:
+      '@datadog/browser-core': 4.42.2
 
   '@drift-labs/sdk@2.108.0-beta.6(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.6.3)(utf-8-validate@5.0.10)':
     dependencies:
@@ -11613,6 +11684,8 @@ snapshots:
 
   expand-template@2.0.3: {}
 
+  exponential-backoff@3.1.1: {}
+
   exponential-backoff@3.1.2: {}
 
   express@4.21.2:
@@ -14007,6 +14080,8 @@ snapshots:
 
   uuid@8.3.2: {}
 
+  uuid@9.0.1: {}
+
   v8-compile-cache-lib@3.0.1: {}
 
   valibot@0.36.0: {}
@@ -14222,6 +14297,8 @@ snapshots:
   zod-to-json-schema@3.24.5(zod@3.24.3):
     dependencies:
       zod: 3.24.3
+
+  zod@3.22.4: {}
 
   zod@3.24.3: {}
 
