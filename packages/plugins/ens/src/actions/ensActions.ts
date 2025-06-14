@@ -29,16 +29,12 @@ export const ensGetAddressAction: Action<EvmWalletBase> = {
     ],
     schema: z.object({
         ensName: z.string().describe("The ENS name to resolve (e.g., 'vitalik.eth')"),
-        provider: z.string().optional().describe("Optional RPC provider URL"),
-        chainId: z.number().optional().describe("Optional chain ID for resolution"),
     }),
     handler: async (agent, input: Record<string, any>) => {
         try {
             const address = await getAddressFromEns({
                 agent,
                 ensName: input.ensName,
-                provider: input.provider,
-                chainId: input.chainId,
             });
 
             if (!address) {

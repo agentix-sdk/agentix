@@ -4,13 +4,9 @@ import { ensGetAddressAction } from "./actions/ensActions";
 import { getAddressFromEns } from "./tools/ens";
 
 class EnsPlugin extends PluginBase<EvmWalletBase> {
-    constructor(options: { provider?: string; chainId?: number } = {}) {
-        // Create bound methods with options
-        const boundGetAddressFromEns = (params: any) => 
-            getAddressFromEns({ ...params, ...options });
-
+    constructor() {
         const methods = {
-            ensGetAddressFromEns: boundGetAddressFromEns,
+            ensGetAddressFromEns: getAddressFromEns,
         };
 
         const actions = [
