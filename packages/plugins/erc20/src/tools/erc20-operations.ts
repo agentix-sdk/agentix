@@ -45,8 +45,8 @@ export async function transfer(params: {
     try {
         const amountBigInt = typeof amount === 'string' ? BigInt(amount) : amount;
         
-        const result = await agent.wallet.read({
-            address: tokenAddress,
+        const result = await agent.wallet.sendTransaction({
+            to: tokenAddress,
             abi: ERC20_ABI,
             functionName: "transfer",
             args: [to, amountBigInt],
@@ -54,7 +54,7 @@ export async function transfer(params: {
 
         return {
             success: true,
-            transactionHash: (result.value as any)?.hash as any
+            transactionHash: result.hash
         };
     } catch (error: any) {
         return {
@@ -128,8 +128,8 @@ export async function approve(params: {
     try {
         const amountBigInt = typeof amount === 'string' ? BigInt(amount) : amount;
         
-        const result = await agent.wallet.read({
-            address: tokenAddress,
+        const result = await agent.wallet.sendTransaction({
+            to: tokenAddress,
             abi: ERC20_ABI,
             functionName: "approve",
             args: [spender, amountBigInt],
@@ -137,7 +137,7 @@ export async function approve(params: {
 
         return {
             success: true,
-            transactionHash: (result.value as any)?.hash as any
+            transactionHash: result.hash
         };
     } catch (error: any) {
         return {
@@ -155,8 +155,8 @@ export async function revokeApproval(params: {
     const { agent, tokenAddress, spender } = params;
     
     try {
-        const result = await agent.wallet.read({
-            address: tokenAddress,
+        const result = await agent.wallet.sendTransaction({
+            to: tokenAddress,
             abi: ERC20_ABI,
             functionName: "approve",
             args: [spender, BigInt(0)],
@@ -164,7 +164,7 @@ export async function revokeApproval(params: {
 
         return {
             success: true,
-            transactionHash: (result.value as any)?.hash as any
+            transactionHash: result.hash
         };
     } catch (error: any) {
         return {
@@ -186,8 +186,8 @@ export async function transferFrom(params: {
     try {
         const amountBigInt = typeof amount === 'string' ? BigInt(amount) : amount;
         
-        const result = await agent.wallet.read({
-            address: tokenAddress,
+        const result = await agent.wallet.sendTransaction({
+            to: tokenAddress,
             abi: ERC20_ABI,
             functionName: "transferFrom",
             args: [from, to, amountBigInt],
@@ -195,7 +195,7 @@ export async function transferFrom(params: {
 
         return {
             success: true,
-            transactionHash: (result.value as any)?.hash as any
+            transactionHash: result.hash
         };
     } catch (error: any) {
         return {
