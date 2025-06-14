@@ -1,12 +1,40 @@
-import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
+import { PluginBase, EvmWalletBase, EvmChain } from "agentix";
+import {
+    erc721GetBalanceAction,
+    erc721TransferAction,
+    erc721GetTotalSupplyAction,
+    erc721ApproveAction,
+    erc721TransferFromAction,
+    erc721GetOwnerAction,
+} from "./actions/erc721Actions";
+import { 
+    getBalanceOfBySymbol,
+    transferERC721,
+    getTotalSupplyBySymbol,
+    approveERC721,
+    transferFromERC721,
+    getOwnerOfBySymbol,
+} from "./tools/erc721";
 
-class EvmErc721Plugin extends PluginBase<EvmWalletBase> {
+export class ERC721Plugin extends PluginBase<EvmWalletBase> {
     constructor() {
         const methods = {
+            getBalanceOfBySymbol,
+            transferERC721,
+            getTotalSupplyBySymbol,
+            approveERC721,
+            transferFromERC721,
+            getOwnerOfBySymbol,
         };
 
         const actions = [
-        ] as any;
+            erc721GetBalanceAction,
+            erc721TransferAction,
+            erc721GetTotalSupplyAction,
+            erc721ApproveAction,
+            erc721TransferFromAction,
+            erc721GetOwnerAction,
+        ];
 
         const supportedChains = [
             {
@@ -22,4 +50,4 @@ class EvmErc721Plugin extends PluginBase<EvmWalletBase> {
     }
 }
 
-export default EvmErc721Plugin;
+export default ERC721Plugin;

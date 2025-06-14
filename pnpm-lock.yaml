@@ -390,6 +390,9 @@ importers:
       agentix:
         specifier: workspace:*
         version: link:../../core
+      viem:
+        specifier: 2.23.4
+        version: 2.23.4(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.3)
       zod:
         specifier: ^3.24.1
         version: 3.24.3

@@ -241,13 +241,39 @@ export const WBTC: Token = {
     },
 };
 
+// ERC-721 NFT tokens
+export const BAYC: Token = {
+    decimals: 0, // NFTs don't have decimals, but using 0 for consistency
+    symbol: "BAYC",
+    name: "Bored Ape Yacht Club",
+    chains: {
+        "1": {
+            contractAddress: "0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D",
+        },
+    },
+};
+
+export const CRYPTOPUNKS: Token = {
+    decimals: 0, // NFTs don't have decimals, but using 0 for consistency  
+    symbol: "PUNK",
+    name: "CryptoPunks",
+    chains: {
+        "1": {
+            contractAddress: "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB",
+        },
+    },
+};
+
 // All default tokens
 export const DEFAULT_TOKENS = [
     // Native tokens
     ETH, SOL, APT, SUI, MATIC, ZIL, ATOM, XRD, CHR, ZTX,
     // ERC-20 and cross-chain
-    PEPE, USDC, USDT, MODE, WETH, WBTC
+    PEPE, USDC, USDT, MODE, WETH, WBTC,
+    // ERC-721 NFTs
+    BAYC, CRYPTOPUNKS
 ];
 
 export const NATIVE_TOKENS = [ETH, SOL, APT, SUI, MATIC, ZIL, ATOM, XRD, CHR, ZTX];
 export const ERC20_TOKENS = [PEPE, USDC, USDT, MODE, WETH, WBTC];
+export const ERC721_TOKENS = [BAYC, CRYPTOPUNKS];
