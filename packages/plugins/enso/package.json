@@ -44,8 +44,10 @@
   "author": "agentix-sdk",
   "license": "Apache-2.0",
   "dependencies": {
+    "@ensofinance/sdk": "1.0.10",
     "agentix": "workspace:*",
-    "zod": "^3.24.1"
+    "zod": "^3.24.1",
+    "viem": "2.23.4"
   },
   "peerDependencies": {
     "agentix": "workspace:*"

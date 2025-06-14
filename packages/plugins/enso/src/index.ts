@@ -1,12 +1,17 @@
 import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
 
-class EvmEnsoPlugin extends PluginBase<EvmWalletBase> {
+import { ensoRouteAction } from "./actions/ensoActions";
+import { route } from "./tools/enso";
+
+class EnsoPlugin extends PluginBase<EvmWalletBase> {
     constructor() {
         const methods = {
+            ensoRoute: route,
         };
 
         const actions = [
-        ] as any;
+            ensoRouteAction,
+        ];
 
         const supportedChains = [
             {
@@ -22,4 +27,4 @@ class EvmEnsoPlugin extends PluginBase<EvmWalletBase> {
     }
 }
 
-export default EvmEnsoPlugin;
+export default EnsoPlugin;

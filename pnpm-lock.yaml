@@ -351,9 +351,15 @@ importers:
 
   packages/plugins/enso:
     dependencies:
+      '@ensofinance/sdk':
+        specifier: 1.0.10
+        version: 1.0.10
       agentix:
         specifier: workspace:*
         version: link:../../core
+      viem:
+        specifier: 2.23.4
+        version: 2.23.4(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.3)
       zod:
         specifier: ^3.24.1
         version: 3.24.3
@@ -1599,6 +1605,9 @@ packages:
 
   '@ellipsis-labs/phoenix-sdk@1.4.5':
     resolution: {integrity: sha512-vEYgMXuV5/mpnpEi+VK4HO8f6SheHtVLdHHlULBiDN1eECYmL67gq+/cRV7Ar6jAQ7rJZL7xBxhbUW5kugMl6A==}
+
+  '@ensofinance/sdk@1.0.10':
+    resolution: {integrity: sha512-rpW3fbIaTPI6FZs+ia+VwUWlRaBP1XcGU3uK7u/u5YBcsFw8gRqECjBRAFStMJgS5T/q4QKYxP+D54J/YhDTbQ==}
 
   '@esbuild/aix-ppc64@0.25.3':
     resolution: {integrity: sha512-W8bFfPA8DowP8l//sxjJLSLkD8iEjMc7cBVyP+u4cEv9sM7mdUCkgsj+t0n/BWPFtv7WWCN5Yzj0N6FJNUUqBQ==}
@@ -7475,6 +7484,13 @@ snapshots:
       - supports-color
       - typescript
       - utf-8-validate
+
+  '@ensofinance/sdk@1.0.10':
+    dependencies:
+      axios: 1.9.0
+      prettier: 3.5.3
+    transitivePeerDependencies:
+      - debug
 
   '@esbuild/aix-ppc64@0.25.3':
     optional: true
