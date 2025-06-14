@@ -1,12 +1,21 @@
 import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
 
-class EvmEnsPlugin extends PluginBase<EvmWalletBase> {
-    constructor() {
+import { ensGetAddressAction } from "./actions/ensActions";
+import { getAddressFromEns } from "./tools/ens";
+
+class EnsPlugin extends PluginBase<EvmWalletBase> {
+    constructor(options: { provider?: string; chainId?: number } = {}) {
+        // Create bound methods with options
+        const boundGetAddressFromEns = (params: any) => 
+            getAddressFromEns({ ...params, ...options });
+
         const methods = {
+            ensGetAddressFromEns: boundGetAddressFromEns,
         };
 
         const actions = [
-        ] as any;
+            ensGetAddressAction,
+        ];
 
         const supportedChains = [
             {
@@ -22,4 +31,4 @@ class EvmEnsPlugin extends PluginBase<EvmWalletBase> {
     }
 }
 
-export default EvmEnsPlugin;
+export default EnsPlugin;
