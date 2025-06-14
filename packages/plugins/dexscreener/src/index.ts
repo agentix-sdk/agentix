@@ -1,12 +1,30 @@
 import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
 
-class EvmDexscreenerPlugin extends PluginBase<EvmWalletBase> {
+import { 
+    dexscreenerGetPairsByChainAndPairAction,
+    dexscreenerSearchPairsAction,
+    dexscreenerGetTokenPairsAction
+} from "./actions/dexscreenerActions";
+
+import { 
+    getPairsByChainAndPair,
+    searchPairs,
+    getTokenPairsByTokenAddress
+} from "./tools/dexscreener";
+
+class DexscreenerPlugin extends PluginBase<EvmWalletBase> {
     constructor() {
         const methods = {
+            dexscreenerGetPairsByChainAndPair: getPairsByChainAndPair,
+            dexscreenerSearchPairs: searchPairs,
+            dexscreenerGetTokenPairsByTokenAddress: getTokenPairsByTokenAddress,
         };
 
         const actions = [
-        ] as any;
+            dexscreenerGetPairsByChainAndPairAction,
+            dexscreenerSearchPairsAction,
+            dexscreenerGetTokenPairsAction,
+        ];
 
         const supportedChains = [
             {
@@ -22,4 +40,4 @@ class EvmDexscreenerPlugin extends PluginBase<EvmWalletBase> {
     }
 }
 
-export default EvmDexscreenerPlugin;
+export default DexscreenerPlugin;
