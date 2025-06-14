@@ -264,6 +264,29 @@ export const CRYPTOPUNKS: Token = {
     },
 };
 
+// ERC-1155 Multi-Token contracts
+export const OPENSEA_SHARED: Token = {
+    decimals: 0, // Multi-tokens typically don't have decimals
+    symbol: "OPENSEA",
+    name: "OpenSea Shared Storefront",
+    chains: {
+        "1": {
+            contractAddress: "0x495f947276749Ce646f68AC8c248420045cb7b5e",
+        },
+    },
+};
+
+export const ENS_METADATA: Token = {
+    decimals: 0,
+    symbol: "ENS-METADATA", 
+    name: "ENS Metadata Service",
+    chains: {
+        "1": {
+            contractAddress: "0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85",
+        },
+    },
+};
+
 // All default tokens
 export const DEFAULT_TOKENS = [
     // Native tokens
@@ -271,9 +294,12 @@ export const DEFAULT_TOKENS = [
     // ERC-20 and cross-chain
     PEPE, USDC, USDT, MODE, WETH, WBTC,
     // ERC-721 NFTs
-    BAYC, CRYPTOPUNKS
+    BAYC, CRYPTOPUNKS,
+    // ERC-1155 Multi-tokens
+    OPENSEA_SHARED, ENS_METADATA
 ];
 
 export const NATIVE_TOKENS = [ETH, SOL, APT, SUI, MATIC, ZIL, ATOM, XRD, CHR, ZTX];
 export const ERC20_TOKENS = [PEPE, USDC, USDT, MODE, WETH, WBTC];
 export const ERC721_TOKENS = [BAYC, CRYPTOPUNKS];
+export const ERC1155_TOKENS = [OPENSEA_SHARED, ENS_METADATA];
