@@ -14,6 +14,9 @@ import {
     approveERC721,
     transferFromERC721,
     getOwnerOfBySymbol,
+    setApprovalForAll,
+    getApproved,
+    isApprovedForAll,
 } from "./tools/erc721";
 
 export class ERC721Plugin extends PluginBase<EvmWalletBase> {
@@ -25,6 +28,9 @@ export class ERC721Plugin extends PluginBase<EvmWalletBase> {
             approveERC721,
             transferFromERC721,
             getOwnerOfBySymbol,
+            setApprovalForAll,
+            getApproved,
+            isApprovedForAll,
         };
 
         const actions = [
