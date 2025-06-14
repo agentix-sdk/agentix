@@ -1,12 +1,40 @@
 import { EvmChain, PluginBase, EvmWalletBase } from "agentix";
 
+import { 
+    debridgeBridgeAction, 
+    debridgeGetQuoteAction, 
+    debridgeGetTokenInfoAction, 
+    debridgeGetSupportedChainsAction, 
+    debridgeCheckStatusAction 
+} from "./actions/debridgeActions";
+
+import { 
+    getBridgeQuote, 
+    createBridgeOrder, 
+    executeBridgeTransaction, 
+    getTokenInfo, 
+    getSupportedChains, 
+    checkTransactionStatus 
+} from "./tools/debridge_bridge";
+
 class DebridgePlugin extends PluginBase<EvmWalletBase> {
     constructor() {
         const methods = {
+            debridgeGetBridgeQuote: getBridgeQuote,
+            debridgeCreateBridgeOrder: createBridgeOrder,
+            debridgeExecuteBridgeTransaction: executeBridgeTransaction,
+            debridgeGetTokenInfo: getTokenInfo,
+            debridgeGetSupportedChains: getSupportedChains,
+            debridgeCheckTransactionStatus: checkTransactionStatus,
         };
 
         const actions = [
-        ] as any;
+            debridgeBridgeAction,
+            debridgeGetQuoteAction,
+            debridgeGetTokenInfoAction,
+            debridgeGetSupportedChainsAction,
+            debridgeCheckStatusAction,
+        ];
 
         const supportedChains = [
             {
