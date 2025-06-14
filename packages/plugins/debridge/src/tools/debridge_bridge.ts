@@ -84,7 +84,7 @@ export async function createBridgeOrder({
     params.append("srcChainRefundAddress", senderAddress);
     params.append("dstChainOrderAuthorityAddress", dstChainTokenOutRecipient);
     params.append("referralCode", "21064");
-    params.append("deBridgeApp", "GOAT");
+    params.append("deBridgeApp", "AGENTIX");
     params.append("prependOperatingExpenses", "true");
 
     const url = `${DEFAULT_BASE_URL}/dln/order/create-tx?${params}`;

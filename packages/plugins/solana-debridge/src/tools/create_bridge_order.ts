@@ -33,7 +33,7 @@ export async function createDebridgeBridgeOrder(
     srcChainRefundAddress: params.account, // Always use sender's address
     dstChainOrderAuthorityAddress: params.dstChainTokenOutRecipient, // Always use recipient's address
     referralCode: "21064", // deBridge integration analytics
-    deBridgeApp: "SOLANA_AGENT_KIT", // deBridge integration analytics
+    deBridgeApp: "AGENTIX", // deBridge integration analytics
     prependOperatingExpenses: "true", // Always true
   });
 
